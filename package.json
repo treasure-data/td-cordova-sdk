@@ -1,0 +1,14 @@
+{
+  "name": "treasuredata-cordova-sdk",
+  "version": "0.0.1",
+  "description": "TreasureData SDK Plugin for Cordova",
+  "cordova": {
+    "id": "com.treasuredata.cordova",
+    "platforms": []
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "",
+  "license": "ISC"
+}
