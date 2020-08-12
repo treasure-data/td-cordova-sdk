@@ -1,0 +1,19 @@
+jobs:
+  install:
+    executor:
+      name: node/default
+      tag: '13.11'
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          command: yarn install
+          name: Run yarn install
+orbs:
+  node: circleci/node@3.0.1
+version: 2.1
+workflows:
+  test:
+    jobs:
+      - install

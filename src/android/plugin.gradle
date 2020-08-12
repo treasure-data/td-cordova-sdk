@@ -1,0 +1,11 @@
+allprojects {
+  repositories {
+    mavenLocal()
+    google()
+    jcenter()
+  }
+}
+
+dependencies {
+  implementation 'com.treasuredata:td-android-sdk:0.3.0'
+}
