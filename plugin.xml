@@ -16,4 +16,21 @@
     <source-file src="src/android/TreasureDataPlugin.java" target-dir="src/com/treasuredata/cordova/TreasureDataPlugin" />
     <framework src="src/android/plugin.gradle" custom="true" type="gradleReference" />
   </platform>
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="TreasureDataPlugin">
+          <param name="ios-package" value="TreasureDataPlugin" />
+      </feature>
+    </config-file>
+    <source-file src="src/ios/TreasureDataPlugin.h" target-dir="src/com/treasuredata/cordova/TreasureDataPlugin" />
+    <source-file src="src/ios/TreasureDataPlugin.m" target-dir="src/com/treasuredata/cordova/TreasureDataPlugin" />
+    <podspec>
+      <config>
+          <source url="https://github.com/CocoaPods/Specs.git"/>
+      </config>
+      <pods use-frameworks="true">
+          <pod name="TreasureData-iOS-SDK" spec="= 0.6.0" />
+      </pods>
+    </podspec>
+  </platform>
 </plugin>
