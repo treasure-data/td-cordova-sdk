@@ -1,0 +1,6 @@
+framework module TreasureData_iOS_SDK {
+  umbrella header "TreasureData-iOS-SDK-umbrella.h"
+
+  export *
+  module * { export * }
+}

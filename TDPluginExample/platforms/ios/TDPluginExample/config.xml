@@ -19,6 +19,12 @@
         <param name="ios-package" value="CDVGestureHandler" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="TreasureDataPlugin">
+        <param name="ios-package" value="TreasureDataPlugin" />
+    </feature>
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+    </feature>
     <name>TDPluginExample</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

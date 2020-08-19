@@ -1,0 +1,22 @@
+PODS:
+  - KeenClientTD (3.2.35):
+    - KeenClientTD/keen_sqlite (= 3.2.35)
+  - KeenClientTD/keen_sqlite (3.2.35)
+  - TreasureData-iOS-SDK (0.6.0):
+    - KeenClientTD (= 3.2.35)
+
+DEPENDENCIES:
+  - TreasureData-iOS-SDK (= 0.6.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - KeenClientTD
+    - TreasureData-iOS-SDK
+
+SPEC CHECKSUMS:
+  KeenClientTD: dc8f7d3948b650b6c04a3be73f947bb757467efd
+  TreasureData-iOS-SDK: 50cb4985fef90bac080af13bca0df258ceb05630
+
+PODFILE CHECKSUM: aa3d52f483aa3306d84195a32aab2d665b764cd2
+
+COCOAPODS: 1.9.3

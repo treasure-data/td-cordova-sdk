@@ -1,0 +1,6 @@
+framework module KeenClientTD {
+  umbrella header "KeenClientTD-umbrella.h"
+
+  export *
+  module * { export * }
+}
