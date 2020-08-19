@@ -1,31 +1,33 @@
 # TD Mobile SDK - Cordova Demo App
 
 ## Installation
-### Android
+### Install plugins
+You must install TreasureDataPlugin and Diaglog plugin
 Add plugin
 ```
 $ cordova plugin add --link ..
 ```
 
-Remove plugin
-```
-$ cordova plugin remove com.treasuredata.cordova
-```
-
 Dialog plugin
-
 ```
 $ cordova plugin add cordova-plugin-dialogs
 ```
 
+### Android
 Build
-
 ```
 $ cordova build android
 ```
 
 Run with emulator
-
 ```
 $ cordova emulate android
 ```
+
+### iOS
+Prepare
+```
+$ cordova prepare ios
+```
+
+Then open TDPluginExample/platforms/ios/TDPluginExample.xcworkspace in Xcode and run.
