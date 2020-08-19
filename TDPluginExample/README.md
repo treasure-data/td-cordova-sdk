@@ -1,18 +1,6 @@
 # TD Mobile SDK - Cordova Demo App
 
 ## Installation
-### Install plugins
-You must install TreasureDataPlugin and Diaglog plugin
-Add plugin
-```
-$ cordova plugin add --link ..
-```
-
-Dialog plugin
-```
-$ cordova plugin add cordova-plugin-dialogs
-```
-
 ### Android
 Build
 ```
