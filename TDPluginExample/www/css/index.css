@@ -72,3 +72,21 @@ h1 {
 .top5 {
     margin-top: 5px;
 }
+
+.form-field {
+    display: flex;
+    align-items: center;
+    padding: 3px 0;
+}
+.form-field label {
+    display: block;
+    flex: 0 0 30%;
+}
+.form-field input {
+    flex: 1
+}
+
+.form-field input,
+.form-field label {
+    height: 22px;
+}

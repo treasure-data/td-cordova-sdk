@@ -59,12 +59,15 @@ var constants = {
     CLEAR_FIRSTRUN_CLASS: '.clear-firstrun',
     GET_UUID_CLASS: '.get-uuid',
     FETCH_USERSEGMENTS_CLASS: '.fetch-user-segments',
+    UPDATE_CONFIG_CLASS: '.update-config',
 
     actionTypes: {
         addEvent: 'add_event',
         uploadEvents: 'upload_events',
         checkStatus: 'check_status',
         resetCheckStatus: 'reset_check_status',
-        showInfo: 'show_info'
+        showInfo: 'show_info',
+        updateConfigs: 'update_configs',
+        init: 'init'
     }
 }

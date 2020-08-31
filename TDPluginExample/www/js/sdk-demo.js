@@ -18,6 +18,8 @@ var demo = (function () {
             },
         },
 
+        storageKey: 'configs',
+
         present: function present(proposal) {
             this.type = proposal.type || null;
 
@@ -33,6 +35,54 @@ var demo = (function () {
                 this.type = null;
             } else if (this.type === constants.actionTypes.showInfo) {
                 this.infoValue = proposal.payload.value;
+            } else if (this.type === constants.actionTypes.updateConfigs) {
+                var configs = proposal.configs || {}
+
+                if (configs.apiEndpoint) {
+                    this.config.apiEndpoint = configs.apiEndpoint
+                }
+
+                if (configs.apiKey) {
+                    this.config.apiKey = configs.apiKey
+                }
+
+                if (configs.database) {
+                    this.customConfig.database = configs.database
+                }
+
+                if (configs.table) {
+                    this.customConfig.table = configs.table
+                }
+
+                if (configs.cdpEndpoint) {
+                    this.config.cdpEndpoint = configs.cdpEndpoint
+                }
+
+                if (configs.audienceTokens) {
+                    this.customConfig.audienceTokens = configs.audienceTokens.split(',')
+                }
+
+                if (configs.segmentKeys) {
+                    this.customConfig.segmentKeys = JSON.parse(configs.segmentKeys)
+                }
+
+                localStorage.setItem(this.storageKey, JSON.stringify({
+                    config: this.config,
+                    customConfig: this.customConfig
+                }))
+            } else if (this.type === constants.actionTypes.init) {
+                var configs = JSON.parse(localStorage.getItem(this.storageKey))
+
+                if (configs) {
+                    this.config = configs.config
+                    this.customConfig = configs.customConfig
+                }
+
+                navigator.notification.alert({
+                    config: this.config,
+                    customConfig: this.customConfig
+                })
+                cordova.plugins.TreasureDataPlugin.setup(model.config);
             }
 
             state.representation(this);
@@ -40,6 +90,19 @@ var demo = (function () {
     };
 
     var actions = {
+        start: function () {
+            model.present({
+                type: constants.actionTypes.init
+            })
+        },
+
+        updateConfigs: function (configs) {
+            model.present({
+                type: constants.actionTypes.updateConfigs,
+                configs: configs
+            })
+        },
+
         addEvent: function () {
             cordova.plugins.TreasureDataPlugin.addEvent(
                 {
@@ -178,7 +241,7 @@ var demo = (function () {
         },
 
         enableAutoAppendRecordUUID: function () {
-            cordova.plugins.TreasureDataPlugin.enableAutoAppendRecordUUID();
+            cordova.plugins.TreasureDataPlugin.enableAutoAppendRecordUUID('recordUUID')
         },
 
         disableAutoAppendRecordUUID: function () {
@@ -345,6 +408,7 @@ var demo = (function () {
 
     var state = {
         representation: function representation(m) {
+            view.updateConfigs(m.config, m.customConfig)
             if (m.type === constants.actionTypes.addEvent) {
                 var text = m.success ? "success" : "failed";
                 view.showStatus(text);
@@ -368,7 +432,29 @@ var demo = (function () {
         },
     };
 
+    function getInputElement(name) {
+        return document.querySelector('input[name="' + name + '"]')
+    }
+
     var view = {
+        updateConfigs: function updateConfigs (config, customConfig) {
+            var apiEndpointEl = getInputElement('apiEndpoint')
+            var apiKeyEl = getInputElement('apiKey')
+            var databaseEl = getInputElement('database')
+            var tableEl = getInputElement('table')
+            var cdpEndpointEl = getInputElement('cdpEndpoint')
+            var audienceTokensEl = getInputElement('audienceTokens')
+            var segmentKeysEl = getInputElement('segmentKeys')
+
+            apiEndpointEl.value = config.apiEndpoint
+            apiKeyEl.value = config.apiKey
+            databaseEl.value = customConfig.database
+            tableEl.value = customConfig.table
+            cdpEndpointEl.value = config.cdpEndpoint
+            audienceTokensEl.value = customConfig.audienceTokens.join(',')
+            segmentKeysEl.value = JSON.stringify(customConfig.segmentKeys)
+        },
+
         showStatus: function showStatus(text) {
             navigator.notification.alert(text);
         },
@@ -379,7 +465,6 @@ var demo = (function () {
     };
 
     return {
-        actions: actions,
-        setup: setup,
+        actions: actions
     };
 })();

@@ -33,7 +33,7 @@ var app = {
     onDeviceReady: function () {
         this.setupEventListeners();
 
-        demo.setup();
+        demo.actions.start();
     },
 
     query: function query(selector) {
@@ -137,6 +137,8 @@ var app = {
 
         var getUUIDBtn = this.query(constants.GET_UUID_CLASS);
         var fetchUserSegmentsBtn = this.query(constants.FETCH_USERSEGMENTS_CLASS);
+
+        var updateConfigBtn = this.query(constants.UPDATE_CONFIG_CLASS)
 
         this.registerClickEvent(addEventBtn, handlers.addEvent);
         this.registerClickEvent(
@@ -287,6 +289,32 @@ var app = {
         this.registerClickEvent(clearFirstRunBtn, handlers.clearFirstRun);
         this.registerClickEvent(getUUIDBtn, handlers.getUUID);
         this.registerClickEvent(fetchUserSegmentsBtn, handlers.fetchUserSegments);
+
+        this.registerClickEvent(updateConfigBtn, function (evt) {
+            evt.preventDefault()
+
+            function getInputElement(name) {
+                return document.querySelector('input[name="' + name + '"]')
+            }
+
+            var apiEndpointEl = getInputElement('apiEndpoint')
+            var apiKeyEl = getInputElement('apiKey')
+            var databaseEl = getInputElement('database')
+            var tableEl = getInputElement('table')
+            var cdpEndpointEl = getInputElement('cdpEndpoint')
+            var audienceTokensEl = getInputElement('audienceTokens')
+            var segmentKeysEl = getInputElement('segmentKeys')
+
+            handlers.updateConfigs({
+                apiEndpoint: apiEndpointEl.value,
+                apiKey: apiKeyEl.value,
+                database: databaseEl.value,
+                table: tableEl.value,
+                cdpEndpoint: cdpEndpointEl.value,
+                audienceTokens: audienceTokensEl.value,
+                segmentKeys: segmentKeysEl.value
+            })
+        })
     },
 };
 
