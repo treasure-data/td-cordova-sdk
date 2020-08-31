@@ -78,10 +78,6 @@ var demo = (function () {
                     this.customConfig = configs.customConfig
                 }
 
-                navigator.notification.alert({
-                    config: this.config,
-                    customConfig: this.customConfig
-                })
                 cordova.plugins.TreasureDataPlugin.setup(model.config);
             }
 
