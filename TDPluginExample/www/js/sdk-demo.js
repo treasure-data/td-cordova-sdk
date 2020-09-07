@@ -138,7 +138,6 @@ var demo = (function () {
         },
 
         uploadEventsWithCallback: function () {
-            console.log('gi pa')
             cordova.plugins.TreasureDataPlugin.uploadEventsWithCallback(
                 function success(msg) {
                     model.present({
