@@ -138,6 +138,7 @@ var demo = (function () {
         },
 
         uploadEventsWithCallback: function () {
+            console.log('gi pa')
             cordova.plugins.TreasureDataPlugin.uploadEventsWithCallback(
                 function success(msg) {
                     model.present({
@@ -237,7 +238,7 @@ var demo = (function () {
         },
 
         enableAutoAppendRecordUUID: function () {
-            cordova.plugins.TreasureDataPlugin.enableAutoAppendRecordUUID('recordUUID')
+            cordova.plugins.TreasureDataPlugin.enableAutoAppendRecordUUID()
         },
 
         disableAutoAppendRecordUUID: function () {
