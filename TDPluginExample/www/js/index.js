@@ -34,6 +34,7 @@ var app = {
         this.setupEventListeners();
 
         demo.actions.start();
+        demo.actions.setupStore()
     },
 
     query: function query(selector) {
@@ -139,6 +140,7 @@ var app = {
         var fetchUserSegmentsBtn = this.query(constants.FETCH_USERSEGMENTS_CLASS);
 
         var updateConfigBtn = this.query(constants.UPDATE_CONFIG_CLASS)
+        var iapBtn = this.query(constants.IAP_CLASS)
 
         this.registerClickEvent(addEventBtn, handlers.addEvent);
         this.registerClickEvent(
@@ -315,6 +317,8 @@ var app = {
                 segmentKeys: segmentKeysEl.value
             })
         })
+
+        this.registerClickEvent(iapBtn, handlers.purchase)
     },
 };
 

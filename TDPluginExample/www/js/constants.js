@@ -60,6 +60,7 @@ var constants = {
     GET_UUID_CLASS: '.get-uuid',
     FETCH_USERSEGMENTS_CLASS: '.fetch-user-segments',
     UPDATE_CONFIG_CLASS: '.update-config',
+    IAP_CLASS: '.iap',
 
     actionTypes: {
         addEvent: 'add_event',
@@ -68,6 +69,7 @@ var constants = {
         resetCheckStatus: 'reset_check_status',
         showInfo: 'show_info',
         updateConfigs: 'update_configs',
-        init: 'init'
+        init: 'init',
+        iap: 'iap'
     }
 }

@@ -79,17 +79,95 @@ var demo = (function () {
                 }
 
                 cordova.plugins.TreasureDataPlugin.setup(model.config);
+            } else if (this.type === constants.actionTypes.iap) {
+                this.success = proposal.success
+
+                if (this.success) {
+                    this.purchasedId = proposal.product.id
+                }
             }
 
             state.representation(this);
         },
     };
 
+    // In-app Purchase helpers
+    function log (stage, p) {
+        console.log(stage, ":", JSON.stringify(p))
+    }
+
+    function approved (p) {
+        log("Approved", p)
+        p.verify()
+    }
+
+    function verified (p) {
+        model.present({
+            type: constants.actionTypes.iap,
+            success: true,
+            product: {
+                id: p.id
+            }
+        })
+        log("Finished", p)
+        p.finish()
+    }
+
+    function cancelled () {
+        model.present({
+            type: constants.actionTypes.iap,
+            success: false
+        })
+    }
+
+    // all actions
     var actions = {
         start: function () {
             model.present({
                 type: constants.actionTypes.init
             })
+        },
+
+        setupStore: function () {
+            if (!window.store) {
+                throw new Error("Store is not available")
+            }
+
+            store.register({
+                id: "gas",
+                type: store.CONSUMABLE
+            })
+
+            store.register({
+                id: "com.treasuredata.iaptest.consumable1",
+                type: store.CONSUMABLE
+            })
+
+            store.when('gas').registered(log.bind(null, "Registered"))
+            store.when('gas').updated(log.bind(null, "Updated"))
+            store.when('gas').approved(approved)
+            store.when('gas').verified(verified)
+            store.when("gas").cancelled(cancelled)
+
+            store.when('com.treasuredata.iaptest.consumable1').registered(log.bind(null, "Registered"))
+            store.when('com.treasuredata.iaptest.consumable1').updated(log.bind(null, "Updated"))
+            store.when('com.treasuredata.iaptest.consumable1').approved(approved)
+            store.when('com.treasuredata.iaptest.consumable1').verified(verified)
+            store.when("com.treasuredata.iaptest.consumable1").cancelled(cancelled)
+
+            store.error(function (error) {
+                console.log("Error: ", error.code, ": ", error.message)
+            })
+
+            store.refresh()
+        },
+
+        purchase: function () {
+            if (device.platform === "Android") {
+                store.order("gas")
+            } else if (device.platform === "iOS") {
+                store.order("com.treasuredata.iaptest.consumable1")
+            }
         },
 
         updateConfigs: function (configs) {
@@ -416,6 +494,9 @@ var demo = (function () {
                 view.showStatus(text);
             } else if (m.type === constants.actionTypes.showInfo) {
                 view.showStatus(m.infoValue);
+            } else if (m.type === constants.actionTypes.iap) {
+                var text = m.success ? ["Purchased product: ", m.purchasedId].join("") : "Purchasing failed";
+                view.showStatus(text)
             }
 
             this.nextAction(m);
@@ -454,10 +535,6 @@ var demo = (function () {
         showStatus: function showStatus(text) {
             navigator.notification.alert(text);
         },
-    };
-
-    var setup = function setup() {
-        cordova.plugins.TreasureDataPlugin.setup(model.config);
     };
 
     return {
