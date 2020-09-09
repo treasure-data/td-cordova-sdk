@@ -2,7 +2,7 @@ var demo = (function () {
     var model = {
         config: {
             apiEndpoint: "https://in.treasuredata.com",
-            apiKey: "1/xxxx",
+            apiKey: "1/xxxxxxxxxx",
             defaultDatabase: "defaultDatabase",
             defaultTable: "defaultTable",
             cdpEndpoint: "https://cdp.in.treasuredata.com",

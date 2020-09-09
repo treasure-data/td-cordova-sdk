@@ -24,12 +24,12 @@
     "plugins": {
       "cordova-plugin-whitelist": {},
       "cordova-plugin-purchase": {},
-      "com.treasuredata.cordova": {},
-      "cordova-plugin-device": {}
+      "cordova-plugin-device": {},
+      "com.treasuredata.cordova": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   },
   "devDependencies": {
