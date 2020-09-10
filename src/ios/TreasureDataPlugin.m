@@ -32,6 +32,10 @@
 }
 
 - (NSString*)getStringArg: (CDVInvokedUrlCommand *)command atIndex: (NSInteger)index {
+    if ([command.arguments count] <= index) {
+        return nil;
+    }
+
     NSString *columnName = [command.arguments objectAtIndex:index];
 
     if (columnName == nil || ![columnName isKindOfClass:[NSString class]]) {
