@@ -91,35 +91,6 @@ var demo = (function () {
         },
     };
 
-    // In-app Purchase helpers
-    function log (stage, p) {
-        console.log(stage, ":", JSON.stringify(p))
-    }
-
-    function approved (p) {
-        log("Approved", p)
-        p.verify()
-    }
-
-    function verified (p) {
-        model.present({
-            type: constants.actionTypes.iap,
-            success: true,
-            product: {
-                id: p.id
-            }
-        })
-        log("Finished", p)
-        p.finish()
-    }
-
-    function cancelled () {
-        model.present({
-            type: constants.actionTypes.iap,
-            success: false
-        })
-    }
-
     // all actions
     var actions = {
         start: function () {
@@ -128,46 +99,38 @@ var demo = (function () {
             })
         },
 
-        setupStore: function () {
-            if (!window.store) {
-                throw new Error("Store is not available")
-            }
-
-            store.register({
-                id: "gas",
-                type: store.CONSUMABLE
-            })
-
-            store.register({
-                id: "com.treasuredata.iaptest.consumable1",
-                type: store.CONSUMABLE
-            })
-
-            store.when('gas').registered(log.bind(null, "Registered"))
-            store.when('gas').updated(log.bind(null, "Updated"))
-            store.when('gas').approved(approved)
-            store.when('gas').verified(verified)
-            store.when("gas").cancelled(cancelled)
-
-            store.when('com.treasuredata.iaptest.consumable1').registered(log.bind(null, "Registered"))
-            store.when('com.treasuredata.iaptest.consumable1').updated(log.bind(null, "Updated"))
-            store.when('com.treasuredata.iaptest.consumable1').approved(approved)
-            store.when('com.treasuredata.iaptest.consumable1').verified(verified)
-            store.when("com.treasuredata.iaptest.consumable1").cancelled(cancelled)
-
-            store.error(function (error) {
-                console.log("Error: ", error.code, ": ", error.message)
-            })
-
-            store.refresh()
-        },
-
         purchase: function () {
+            var productId
             if (device.platform === "Android") {
-                store.order("gas")
+                productId = 'gas'
             } else if (device.platform === "iOS") {
-                store.order("com.treasuredata.iaptest.consumable1")
+                productId = 'com.treasuredata.iaptest.consumable1'
             }
+
+            inAppPurchase
+                .getProducts([ productId ])
+                .then(function () {
+                    inAppPurchase.buy(productId)
+                    .then(function (data) {
+                        return inAppPurchase.consume(data.productType, data.receipt, data.signature);
+                    })
+                    .then(function() {
+                        model.present({
+                            type: constants.actionTypes.iap,
+                            success: true,
+                            product: {
+                                id: productId
+                            }
+                        })
+                    })
+                    .catch(function (err) {
+                        model.present({
+                            type: constants.actionTypes.iap,
+                            success: false
+                        })
+                    })
+
+                })
         },
 
         updateConfigs: function (configs) {

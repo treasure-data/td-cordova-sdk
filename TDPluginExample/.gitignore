@@ -41,6 +41,8 @@ typings/
 .serverless/
 .fusebox/
 .dynamodb/
+package-lock.json
+www/manifest.json
 
 # Windows
 ehthumbs.db

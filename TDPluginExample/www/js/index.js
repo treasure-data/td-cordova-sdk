@@ -34,7 +34,6 @@ var app = {
         this.setupEventListeners();
 
         demo.actions.start();
-        demo.actions.setupStore()
     },
 
     query: function query(selector) {
