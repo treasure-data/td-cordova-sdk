@@ -1,14 +1,23 @@
 {
-  "name": "treasuredata-cordova-sdk",
-  "version": "0.0.1",
-  "description": "TreasureData SDK Plugin for Cordova",
+  "name": "td-cordova-sdk",
+  "version": "1.0.0",
+  "bugs": "https://github.com/treasure-data/td-cordova-sdk/issues",
+  "description": "Treasure Data Mobiles SDKs Plugin for Cordova",
   "cordova": {
     "id": "com.treasuredata.cordova",
-    "platforms": []
+    "platforms": ["android", "ios"]
   },
   "keywords": [
     "ecosystem:cordova"
   ],
-  "author": "",
-  "license": "ISC"
+  "author": {
+    "name": "sondo",
+    "email": "son.do@treasure-data.com",
+    "url": "https://www.treasuredata.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/treasure-data/td-cordova-sdk"
+  },
+  "license": "Apache-2.0"
 }
