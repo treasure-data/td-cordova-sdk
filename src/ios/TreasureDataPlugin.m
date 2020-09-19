@@ -31,12 +31,26 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+- (NSString*)getStringArg: (CDVInvokedUrlCommand *)command atIndex: (NSInteger)index {
+    if ([command.arguments count] <= index) {
+        return nil;
+    }
+
+    NSString *columnName = [command.arguments objectAtIndex:index];
+
+    if (columnName == nil || ![columnName isKindOfClass:[NSString class]]) {
+        return nil;
+    }
+
+    return columnName;
+}
+
 #pragma mark - Set up
 
 - (void)setup:(CDVInvokedUrlCommand *)command
 {
     NSDictionary *configuration = [command.arguments objectAtIndex:0];
-    
+
     [TreasureData initializeApiEndpoint:configuration[@"apiEndpoint"]];
     [TreasureData initializeEncryptionKey:configuration[@"encryptionKey"]];
     [TreasureData initializeWithApiKey:configuration[@"apiKey"]];
@@ -50,9 +64,9 @@
 - (void)addEvent:(CDVInvokedUrlCommand *)command
 {
     NSDictionary *event = [command.arguments objectAtIndex:0];
-    NSString *table = [command.arguments objectAtIndex:1];
-    NSString *database = [command.arguments objectAtIndex:2];
-    
+    NSString *table = [self getStringArg:command atIndex:1];
+    NSString *database = [self getStringArg:command atIndex:2];
+
     if (database == nil) {
         [[TreasureData sharedInstance] addEvent:event table:table];
     } else {
@@ -63,9 +77,9 @@
 - (void)addEventWithCallback:(CDVInvokedUrlCommand *)command
 {
     NSDictionary *event = [command.arguments objectAtIndex:0];
-    NSString *table = [command.arguments objectAtIndex:1];
-    NSString *database = [command.arguments objectAtIndex:2];
-    
+    NSString *table = [self getStringArg:command atIndex:1];
+    NSString *database = [self getStringArg:command atIndex:2];
+
     if (database == nil) {
         [[TreasureData sharedInstance] addEventWithCallback:event table:table onSuccess:^{
             [self sendOkResult:command];
@@ -160,7 +174,7 @@
 
 - (void)enableServerSideUploadTimestamp:(CDVInvokedUrlCommand *)command
 {
-    NSString *columnName = [command.arguments objectAtIndex:0];
+    NSString *columnName = [self getStringArg:command atIndex:0];
     if (columnName == nil) {
         [[TreasureData sharedInstance] enableServerSideUploadTimestamp];
     } else {
@@ -177,7 +191,7 @@
 
 - (void)enableAutoAppendRecordUUID:(CDVInvokedUrlCommand *)command
 {
-    NSString *columnName = [command.arguments objectAtIndex:0];
+    NSString *columnName = [self getStringArg:command atIndex:0];
     if (columnName == nil) {
         [[TreasureData sharedInstance] enableAutoAppendRecordUUID];
     } else {
@@ -194,7 +208,7 @@
 
 - (void)enableAutoAppendAdvertisingIdentifier:(CDVInvokedUrlCommand *)command
 {
-    NSString *columnName = [command.arguments objectAtIndex:0];
+    NSString *columnName = [self getStringArg:command atIndex:0];
     if (columnName == nil) {
         [[TreasureData sharedInstance] enableAutoAppendAdvertisingIdentifier];
     } else {
@@ -211,8 +225,8 @@
 
 - (void)startSession:(CDVInvokedUrlCommand *)command
 {
-    NSString *table = [command.arguments objectAtIndex:0];
-    NSString *database = [command.arguments objectAtIndex:1];
+    NSString *table = [self getStringArg:command atIndex:0];
+    NSString *database = [self getStringArg:command atIndex:1];
 
     if (database == nil) {
         [[TreasureData sharedInstance] startSession:table];
@@ -223,8 +237,8 @@
 
 - (void)endSession:(CDVInvokedUrlCommand *)command
 {
-    NSString *table = [command.arguments objectAtIndex:0];
-    NSString *database = [command.arguments objectAtIndex:1];
+    NSString *table = [self getStringArg:command atIndex:0];
+    NSString *database = [self getStringArg:command atIndex:1];
 
     if (database == nil) {
         [[TreasureData sharedInstance] endSession:table];

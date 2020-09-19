@@ -15,12 +15,16 @@
   "dependencies": {
     "cordova-android": "^8.1.0",
     "cordova-ios": "^5.1.1",
+    "cordova-plugin-device": "^2.0.3",
+    "cordova-plugin-inapppurchase": "^1.2.0",
     "dot-prop": "^5.1.1",
     "treasuredata-cordova-sdk": "file:.."
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "com.treasuredata.cordova": {}
     },
     "platforms": [
       "android",

@@ -41,8 +41,8 @@ public class TreasureDataPlugin extends CordovaPlugin {
         } else if (action.equals("addEvent")) {
             try {
                 JSONObject event = args.getJSONObject(0);
-                String table = args.getString(1);
-                String database = args.getString(2);
+                String table = this.getStringArg(args, 1);
+                String database = this.getStringArg(args, 2);
 
                 this.addEvent(event, table, database);
             } catch (JSONException jsone) {
@@ -53,14 +53,15 @@ public class TreasureDataPlugin extends CordovaPlugin {
         } else if (action.equals("addEventWithCallback")) {
             try {
                 JSONObject event = args.getJSONObject(0);
-                String table = args.getString(1);
-                String database = args.getString(2);
+                String table = this.getStringArg(args, 1);
+                String database = this.getStringArg(args, 2);
 
                 this.addEventWithCallback(event, table, database, callbackContext);
             } catch (JSONException jsone) {
                 Log.e(TAG, jsone.getMessage(), jsone);
             }
         } else if (action.equals("uploadEventsWithCallback")) {
+            Log.i(TAG, "Upload events with callback");
             this.uploadEventsWithCallback(callbackContext);
         } else if (action.equals("enableAppLifecycleEvent")) {
             this.enableAppLifecycleEvent();
@@ -87,17 +88,17 @@ public class TreasureDataPlugin extends CordovaPlugin {
         } else if (action.equals("disableAutoAppendLocaleInformation")) {
             this.disableAutoAppendLocaleInformation();
         } else if (action.equals("enableServerSideUploadTimestamp")) {
-            final String columnName = args.getString(0);
+            final String columnName = this.getStringArg(args, 0);
             this.enableServerSideUploadTimestamp(columnName);
         } else if (action.equals("disableServerSideUploadTimestamp")) {
             this.disableServerSideUploadTimestamp();
         } else if (action.equals("enableAutoAppendRecordUUID")) {
-            final String columnName = args.getString(0);
+            final String columnName = this.getStringArg(args, 0);
             this.enableAutoAppendRecordUUID(columnName);
         } else if (action.equals("disableAutoAppendRecordUUID")) {
             this.disableAutoAppendRecordUUID();
         } else if (action.equals("enableAutoAppendAdvertisingIdentifier")) {
-            final String columnName = args.getString(0);
+            final String columnName = this.getStringArg(args, 0);
             this.enableAutoAppendAdvertisingIdentifier(columnName);
         } else if (action.equals("disableAutoAppendAdvertisingIdentifier")) {
             this.disableAutoAppendAdvertisingIdentifier();
@@ -116,13 +117,13 @@ public class TreasureDataPlugin extends CordovaPlugin {
         } else if (action.equals("getGlobalSessionId")) {
             this.getGlobalSessionId(callbackContext);
         } else if (action.equals("startSession")) {
-            final String table = args.getString(0);
-            final String database = args.getString(1);
+            final String table = this.getStringArg(args, 0);
+            final String database = this.getStringArg(args, 1);
 
             this.startSession(table, database);
         } else if (action.equals("endSession")) {
-            final String table = args.getString(0);
-            final String database = args.getString(1);
+            final String table = this.getStringArg(args, 0);
+            final String database = this.getStringArg(args, 1);
 
             this.endSession(table, database);
         } else if (action.equals("enableCustomEvent")) {
@@ -171,6 +172,12 @@ public class TreasureDataPlugin extends CordovaPlugin {
         }
 
         return true;
+    }
+
+    private String getStringArg(JSONArray args, int atIndex) throws JSONException {
+        final String argValue = args.getString(atIndex);
+
+        return argValue == "null" ? null : argValue;
     }
 
     private void setup(JSONObject options) throws JSONException, URISyntaxException {

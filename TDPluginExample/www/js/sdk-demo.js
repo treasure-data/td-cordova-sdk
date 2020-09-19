@@ -2,7 +2,7 @@ var demo = (function () {
     var model = {
         config: {
             apiEndpoint: "https://in.treasuredata.com",
-            apiKey: "1/xxxx",
+            apiKey: "1/xxxxxxxxxx",
             defaultDatabase: "defaultDatabase",
             defaultTable: "defaultTable",
             cdpEndpoint: "https://cdp.in.treasuredata.com",
@@ -17,6 +17,8 @@ var demo = (function () {
                 td_client_id: "value",
             },
         },
+
+        storageKey: 'configs',
 
         present: function present(proposal) {
             this.type = proposal.type || null;
@@ -33,13 +35,111 @@ var demo = (function () {
                 this.type = null;
             } else if (this.type === constants.actionTypes.showInfo) {
                 this.infoValue = proposal.payload.value;
+            } else if (this.type === constants.actionTypes.updateConfigs) {
+                var configs = proposal.configs || {}
+
+                if (configs.apiEndpoint) {
+                    this.config.apiEndpoint = configs.apiEndpoint
+                }
+
+                if (configs.apiKey) {
+                    this.config.apiKey = configs.apiKey
+                }
+
+                if (configs.database) {
+                    this.customConfig.database = configs.database
+                }
+
+                if (configs.table) {
+                    this.customConfig.table = configs.table
+                }
+
+                if (configs.cdpEndpoint) {
+                    this.config.cdpEndpoint = configs.cdpEndpoint
+                }
+
+                if (configs.audienceTokens) {
+                    this.customConfig.audienceTokens = configs.audienceTokens.split(',')
+                }
+
+                if (configs.segmentKeys) {
+                    this.customConfig.segmentKeys = JSON.parse(configs.segmentKeys)
+                }
+
+                localStorage.setItem(this.storageKey, JSON.stringify({
+                    config: this.config,
+                    customConfig: this.customConfig
+                }))
+            } else if (this.type === constants.actionTypes.init) {
+                var configs = JSON.parse(localStorage.getItem(this.storageKey))
+
+                if (configs) {
+                    this.config = configs.config
+                    this.customConfig = configs.customConfig
+                }
+
+                cordova.plugins.TreasureDataPlugin.setup(model.config);
+            } else if (this.type === constants.actionTypes.iap) {
+                this.success = proposal.success
+
+                if (this.success) {
+                    this.purchasedId = proposal.product.id
+                }
             }
 
             state.representation(this);
         },
     };
 
+    // all actions
     var actions = {
+        start: function () {
+            model.present({
+                type: constants.actionTypes.init
+            })
+        },
+
+        purchase: function () {
+            var productId
+            if (device.platform === "Android") {
+                productId = 'gas'
+            } else if (device.platform === "iOS") {
+                productId = 'com.treasuredata.iaptest.consumable1'
+            }
+
+            inAppPurchase
+                .getProducts([ productId ])
+                .then(function () {
+                    inAppPurchase.buy(productId)
+                    .then(function (data) {
+                        return inAppPurchase.consume(data.productType, data.receipt, data.signature);
+                    })
+                    .then(function() {
+                        model.present({
+                            type: constants.actionTypes.iap,
+                            success: true,
+                            product: {
+                                id: productId
+                            }
+                        })
+                    })
+                    .catch(function (err) {
+                        model.present({
+                            type: constants.actionTypes.iap,
+                            success: false
+                        })
+                    })
+
+                })
+        },
+
+        updateConfigs: function (configs) {
+            model.present({
+                type: constants.actionTypes.updateConfigs,
+                configs: configs
+            })
+        },
+
         addEvent: function () {
             cordova.plugins.TreasureDataPlugin.addEvent(
                 {
@@ -178,7 +278,7 @@ var demo = (function () {
         },
 
         enableAutoAppendRecordUUID: function () {
-            cordova.plugins.TreasureDataPlugin.enableAutoAppendRecordUUID();
+            cordova.plugins.TreasureDataPlugin.enableAutoAppendRecordUUID()
         },
 
         disableAutoAppendRecordUUID: function () {
@@ -345,6 +445,7 @@ var demo = (function () {
 
     var state = {
         representation: function representation(m) {
+            view.updateConfigs(m.config, m.customConfig)
             if (m.type === constants.actionTypes.addEvent) {
                 var text = m.success ? "success" : "failed";
                 view.showStatus(text);
@@ -356,6 +457,9 @@ var demo = (function () {
                 view.showStatus(text);
             } else if (m.type === constants.actionTypes.showInfo) {
                 view.showStatus(m.infoValue);
+            } else if (m.type === constants.actionTypes.iap) {
+                var text = m.success ? ["Purchased product: ", m.purchasedId].join("") : "Purchasing failed";
+                view.showStatus(text)
             }
 
             this.nextAction(m);
@@ -368,18 +472,35 @@ var demo = (function () {
         },
     };
 
+    function getInputElement(name) {
+        return document.querySelector('input[name="' + name + '"]')
+    }
+
     var view = {
+        updateConfigs: function updateConfigs (config, customConfig) {
+            var apiEndpointEl = getInputElement('apiEndpoint')
+            var apiKeyEl = getInputElement('apiKey')
+            var databaseEl = getInputElement('database')
+            var tableEl = getInputElement('table')
+            var cdpEndpointEl = getInputElement('cdpEndpoint')
+            var audienceTokensEl = getInputElement('audienceTokens')
+            var segmentKeysEl = getInputElement('segmentKeys')
+
+            apiEndpointEl.value = config.apiEndpoint
+            apiKeyEl.value = config.apiKey
+            databaseEl.value = customConfig.database
+            tableEl.value = customConfig.table
+            cdpEndpointEl.value = config.cdpEndpoint
+            audienceTokensEl.value = customConfig.audienceTokens.join(',')
+            segmentKeysEl.value = JSON.stringify(customConfig.segmentKeys)
+        },
+
         showStatus: function showStatus(text) {
             navigator.notification.alert(text);
         },
     };
 
-    var setup = function setup() {
-        cordova.plugins.TreasureDataPlugin.setup(model.config);
-    };
-
     return {
-        actions: actions,
-        setup: setup,
+        actions: actions
     };
 })();

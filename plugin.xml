@@ -7,14 +7,19 @@
     <clobbers target="cordova.plugins.TreasureDataPlugin" />
   </js-module>
   <platform name="android">
+    <config-file parent="/manifest/application" target="AndroidManifest.xml">
+      <meta-data android:name="com.google.android.gms.ads.AD_MANAGER_APP" android:value="true" />
+    </config-file>
+
     <config-file parent="/*" target="res/xml/config.xml">
       <feature name="TreasureDataPlugin">
         <param name="android-package" value="com.treasuredata.cordova.TreasureDataPlugin" />
       </feature>
     </config-file>
-    <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+
     <source-file src="src/android/TreasureDataPlugin.java" target-dir="src/com/treasuredata/cordova/TreasureDataPlugin" />
-    <framework src="src/android/plugin.gradle" custom="true" type="gradleReference" />
+
+    <framework src="com.treasuredata:td-android-sdk:0.3.0"/>
   </platform>
   <platform name="ios">
     <config-file target="config.xml" parent="/*">
