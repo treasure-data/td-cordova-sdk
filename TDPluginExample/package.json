@@ -17,8 +17,7 @@
     "cordova-ios": "^5.1.1",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-inapppurchase": "^1.2.0",
-    "dot-prop": "^5.1.1",
-    "treasuredata-cordova-sdk": "file:.."
+    "dot-prop": "^5.1.1"
   },
   "cordova": {
     "plugins": {
