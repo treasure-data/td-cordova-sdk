@@ -5,7 +5,7 @@ You can see more detailed documentation in repositories for [td-android-sdk](htt
 
 ## Getting started
 ```
-cordova plugin add <plugin or github repo>
+cordova plugin add td-cordova-sdk
 ```
 
 ## Usage
