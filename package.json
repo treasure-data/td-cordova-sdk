@@ -1,6 +1,6 @@
 {
   "name": "td-cordova-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "bugs": "https://github.com/treasure-data/td-cordova-sdk/issues",
   "description": "Treasure Data Mobiles SDKs Plugin for Cordova",
   "cordova": {
