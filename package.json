@@ -10,7 +10,7 @@
       "ios"
     ]
   },
-  "scripts":{
+  "scripts": {
     "buildDocs": "jsdoc2md --files ./www/TreasureDataPlugin.js --no-cache --separators --example-lang js --partial ./docs/scope.hbs --partial ./docs/summary.hbs --partial ./docs/global-index.hbs --partial ./docs/header.hbs --partial ./docs/body.hbs --partial ./docs/global-index-table.hbs --global-index-format 'table' > ./docs/api.md"
   },
   "keywords": [
