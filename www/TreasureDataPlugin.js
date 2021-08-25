@@ -332,15 +332,13 @@ exports.disableAutoAppendRecordUUID = function () {
 };
 
 /**
- * Advertising Id will be added to each event record automatically if you call `enableAutoAppendAdvertisingIdentifier`.  
- * 
- * In **Android**, you must install Google Play Service Ads (Gradle com.google.android.gms:play-services-ads) as a dependency for this feature to work.  
- * 
+ * @description In **Android**, you must install Google Play Service Ads (Gradle com.google.android.gms:play-services-ads) as a dependency for this feature to work.  
  * In **iOS**, you must link Ad Support framework in Link Binary With Libraries build phase for this feature to work.  
- * 
  * User must also not turn on Limit Ad Tracking feature in their device, otherwise, Treasure Data will not attach Advertising Id to the record. 
  * Due to asynchronous nature of getting Advertising Id, after `enableAutoAppendAdvertisingIdentifier` method called, it may take some time for Advertising Id to be available to be added to the record. 
  * However, Treasure Data does cache the Advertising Id in order to add to the next event without having to wait for the fetch Advertising Id task to complete.
+ * 
+ * @summary Advertising ID will be added to each event record automatically.
  * 
  * @param {string} [columnName] - Optional column name to use
  * 
@@ -370,16 +368,16 @@ exports.disableAutoAppendAdvertisingIdentifier = function () {
 /**
  * Get current Session ID
  * 
- * @param {function} success - callback function to execute on success
+ * @param {function} success - callback function with session id in first parameter
  * */
 exports.getSessionId = function (success) {
   execute("getSessionId", [], success);
 };
 
 /**
- * Set the session timeout in milliseconds.  
- * If `startSession()` is called during this timeout after `endSession()` is called. 
- * App will start session with the same id as previous one.
+ * @summary Set the session timeout in milliseconds.  
+ * 
+ * @description If `startSession()` is called during this timeout after `endSession()` is called, app will start session with the same id as previous one.
  * 
  * @param {long} timeout - timeout duration in milliseconds
  * 
@@ -429,7 +427,7 @@ exports.endGlobalSession = function () {
 /**
  * Get the current global session ID
  * 
- * @param {function} success - callback function to call on success
+ * @param {function} success - callback function with session id in first parameter.
  * 
  * @see {@link setGlobalSessionTimeoutMilli}
  * @see {@link startGlobalSession}
@@ -470,8 +468,9 @@ exports.endSession = function (table, database) {
 };
 
 /**
- * Custom events are enabled by default.
- * Use this function to optionally enable custom events if you have disabled them manually. 
+ * @summary Custom events are enabled by default.
+ * 
+ * @description Use this function to optionally enable custom events if you have disabled them manually. 
  * 
  * @see {@link disableCustomEvent}
  * 
@@ -483,8 +482,9 @@ exports.enableCustomEvent = function () {
 };
 
 /**
- * Custom events are enabled by default. 
- * Use this function to optionally disable custom events.
+ * @description Custom events are enabled by default. 
+ * 
+ * @summary Use this function to optionally disable custom events.
  * 
  * @see {@link enableCustomEvent}
  * 
@@ -506,9 +506,9 @@ exports.isCustomEventEnabled = function (success) {
 };
 
 /**
- * Track in app purchase events automatically  
+ * @summary Track in app purchase events automatically  
  *   
- * You don't need to check for platform when calling this feature's APIs, they will simply be no-op. In app purchase event tracking is optional and not enable by default. To track in app purchase events automatically, you only need to add a line of code:
+ * @description You don't need to check for platform when calling this feature's APIs, they will simply be no-op. In app purchase event tracking is optional and not enable by default. To track in app purchase events automatically, you only need to add a line of code:
  * 
  * @see {@link disableInAppPurchaseEvent}
  * @see {@link isInAppPurchaseEventEnabled}
@@ -658,7 +658,9 @@ exports.clearFirstRun = function () {
 };
 
 /**
- * Get UUID generated from TreasureData. The value will be set to `td_uuid` column for every events if `enableAutoAppendUniqId` is called.
+ * @summary Get UUID generated from TreasureData. 
+ * 
+ * @description The value will be set to `td_uuid` column for every events if `enableAutoAppendUniqId` is called.
  * 
  * @param {function} success - passes the UUID.
  * */
@@ -667,9 +669,9 @@ exports.getUUID = function (success) {
 };
 
 /**
- * Profile API.  
+ * @summary Profile API.  
  *   
- * This feature is not enabled on accounts by default, please contact support for more information.  
+ * @description This feature is not enabled on accounts by default, please contact support for more information.  
  * **Important:** You must set [`setup('cdpEndpoint: xyz')`](#setup) property of TreasureData's sharedInstance. 
  * 
  * @param {array}       audienceTokens  - Audience Tokens
