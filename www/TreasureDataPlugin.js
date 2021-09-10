@@ -320,7 +320,7 @@ exports.enableAutoAppendRecordUUID = function (columnName) {
 };
 
 /**
- * Disable automatically adding a UUID to each event record automatically.
+ * Disable automatically adding a UUID to each event record.
  * 
  * @see {@link enableAutoAppendRecordUUID}
  * 
@@ -413,7 +413,7 @@ exports.startGlobalSession = function () {
 };
 
 /**
- * End tracking global session.
+ * End tracking a global session.
  * 
  * @see {@link setGlobalSessionTimeoutMilli}
  * @see {@link startGlobalSession}
