@@ -9,7 +9,7 @@
   <tbody>
 <tr>
     <td><a href="#setup">setup(apiEndpoint, apiKey, defaultDatabase, defaultTable, [cdpEndpoint], [encryptionKey])</a></td>
-    <td><p>Configure the TreasureData object.</p>
+    <td><p>Configure the Treasure Data object.</p>
 </td>
         </tr>
 <tr>
@@ -19,25 +19,25 @@
         </tr>
 <tr>
     <td><a href="#uploadEvents">uploadEvents()</a></td>
-    <td><p>Upload buffered events to TreasureData.
+    <td><p>Upload buffered events to Treasure Data.
 This function can be called at any time.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#addEventWithCallback">addEventWithCallback(event, table, database, success, error)</a></td>
-    <td><p>Add an event to a local buffer. Use a callback function to cerify success / failure.</p>
+    <td><p>Add an event to a local buffer. Use a callback function to certify success / failure.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#uploadEventsWithCallback">uploadEventsWithCallback(success, error)</a></td>
-    <td><p>Upload buffered events to TreasureData.
+    <td><p>Upload buffered events to Treasure Data.
 If you need to know when uploadEvents is successful or has failed, use uploadEventsWithCallback.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#enableAppLifecycleEvent">enableAppLifecycleEvent()</a></td>
     <td><p><strong>Android Only function.</strong>
-App lifecycle event tracking is optional and not enable by default. 
+App lifecycle event tracking is optional and not enabled by default. 
 Enable automatic app lifecycle event tracking.</p>
 </td>
         </tr>
@@ -55,18 +55,18 @@ Check if app lifecycle event tracking is enabled.</p>
         </tr>
 <tr>
     <td><a href="#enableAutoAppendUniqId">enableAutoAppendUniqId()</a></td>
-    <td><p>Automatically add UUID of the device to each event.
+    <td><p>Automatically add the UUID of the device to each event.
 This value won&#39;t change until the application is uninstalled.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#disableAutoAppendUniqId">disableAutoAppendUniqId()</a></td>
-    <td><p>Disable adding UUID of device to each event automatically.</p>
+    <td><p>Disable adding the UUID of the device to each event automatically.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#resetUniqId">resetUniqId()</a></td>
-    <td><p>Reset the UUID of device.</p>
+    <td><p>Reset the UUID of the device.</p>
 </td>
         </tr>
 <tr>
@@ -101,7 +101,7 @@ This value won&#39;t change until the application is uninstalled.</p>
         </tr>
 <tr>
     <td><a href="#enableServerSideUploadTimestamp">enableServerSideUploadTimestamp([columnName])</a></td>
-    <td><p>To use server side upload timestamp not only client device time that is recorded when your application calls addEvent.</p>
+    <td><p>To use server side upload timestamp in addition to the client device time that is recorded when your application calls addEvent.</p>
 </td>
         </tr>
 <tr>
@@ -117,7 +117,7 @@ Each event will have a different UUID.</p>
         </tr>
 <tr>
     <td><a href="#disableAutoAppendRecordUUID">disableAutoAppendRecordUUID()</a></td>
-    <td><p>Disable adding record UUID to each event automatically.</p>
+    <td><p>Disable automatically adding a UUID to each event record.</p>
 </td>
         </tr>
 <tr>
@@ -132,7 +132,7 @@ Each event will have a different UUID.</p>
         </tr>
 <tr>
     <td><a href="#getSessionId">getSessionId(success)</a></td>
-    <td><p>Get current Session ID</p>
+    <td><p>Get current session ID.</p>
 </td>
         </tr>
 <tr>
@@ -142,22 +142,22 @@ Each event will have a different UUID.</p>
     </tr>
 <tr>
     <td><a href="#setGlobalSessionTimeoutMilli">setGlobalSessionTimeoutMilli(timeout)</a></td>
-    <td><p>Set the Global Session timeout in milliseconds.</p>
+    <td><p>Set the global session timeout in milliseconds.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#startGlobalSession">startGlobalSession()</a></td>
-    <td><p>Start tracking a global session</p>
+    <td><p>Start tracking a global session.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#endGlobalSession">endGlobalSession()</a></td>
-    <td><p>End tracking global session</p>
+    <td><p>End tracking a global session.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#getGlobalSessionId">getGlobalSessionId(success)</a></td>
-    <td><p>Get the current global session ID</p>
+    <td><p>Get the current global session ID.</p>
 </td>
         </tr>
 <tr>
@@ -167,7 +167,7 @@ Each event will have a different UUID.</p>
         </tr>
 <tr>
     <td><a href="#endSession">endSession(sessionTable, sessionDatabase)</a></td>
-    <td><p>Stop tracking current session.</p>
+    <td><p>Stop tracking the current session.</p>
 </td>
         </tr>
 <tr>
@@ -182,37 +182,37 @@ Each event will have a different UUID.</p>
     </tr>
 <tr>
     <td><a href="#isCustomEventEnabled">isCustomEventEnabled(success)</a></td>
-    <td><p>Whether or not the custom event tracking is enable.</p>
+    <td><p>Whether or not the custom event tracking is enabled.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#enableInAppPurchaseEvent">enableInAppPurchaseEvent()</a></td>
-    <td><p>Track in app purchase events automatically</p>
+    <td><p>Track in-app purchase events automatically.</p>
 </td>
     </tr>
 <tr>
     <td><a href="#disableInAppPurchaseEvent">disableInAppPurchaseEvent()</a></td>
-    <td><p>Disable tracking in app purchase events.</p>
+    <td><p>Disable tracking in-app purchase events.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#isInAppPurchaseEventEnabled">isInAppPurchaseEventEnabled(enabled)</a></td>
-    <td><p>Check if tracking in app purchase events is enabled.</p>
+    <td><p>Check if tracking in-app purchase events is enabled.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#disableAppInstalledEvent">disableAppInstalledEvent()</a></td>
-    <td><p>Disable automatic tracking of event when app is installed</p>
+    <td><p>Disable automatic tracking of the event when app is installed.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#disableAppOpenEvent">disableAppOpenEvent()</a></td>
-    <td><p>Disable automatic tracking of event when app is opened</p>
+    <td><p>Disable automatic tracking of the event when app is opened.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#disableAppUpdatedEvent">disableAppUpdatedEvent()</a></td>
-    <td><p>Disable automatic tracking of event when app is updated</p>
+    <td><p>Disable automatic tracking of the event when app is updated.</p>
 </td>
         </tr>
 <tr>
@@ -232,17 +232,17 @@ Each event will have a different UUID.</p>
         </tr>
 <tr>
     <td><a href="#disableEventCompression">disableEventCompression()</a></td>
-    <td><p>Event data will be uploaded in full uncompressed format.</p>
+    <td><p>Event data will be uploaded in the full uncompressed format.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#enableLogging">enableLogging()</a></td>
-    <td><p>Enable debug log.</p>
+    <td><p>Enable the debug log.</p>
 </td>
         </tr>
 <tr>
     <td><a href="#disableLogging">disableLogging()</a></td>
-    <td><p>Disable debug log.</p>
+    <td><p>Disable the debug log.</p>
 </td>
         </tr>
 <tr>
@@ -257,12 +257,12 @@ Each event will have a different UUID.</p>
         </tr>
 <tr>
     <td><a href="#getUUID">getUUID(success)</a></td>
-    <td><p>Get UUID generated from TreasureData.</p>
+    <td><p>Get the UUID value assigned to every event as td_uuid by the enableAutoAppendUniqID function.</p>
 </td>
     </tr>
 <tr>
     <td><a href="#fetchUserSegments">fetchUserSegments(audienceTokens, keys, success, error)</a></td>
-    <td><p>Profile API.</p>
+    <td><p>Profiles API.</p>
 </td>
     </tr>
 </tbody>
@@ -273,17 +273,17 @@ Each event will have a different UUID.</p>
 ## setup
 `setup(apiEndpoint, apiKey, defaultDatabase, defaultTable, [cdpEndpoint], [encryptionKey])` <br /><br />
 **Description:** <br />
-Configure the TreasureData object.
+Configure the Treasure Data object.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | apiEndpoint | <code>string</code> | Valid API endpoint for ingesting data. <br />[View full list of endpoints here.](https://docs.treasuredata.com/display/public/PD/Sites+and+Endpoints) |
-| apiKey | <code>string</code> | Write only TD Api Key |
-| defaultDatabase | <code>string</code> | Database name in TD Account |
+| apiKey | <code>string</code> | Write only TD API Key |
+| defaultDatabase | <code>string</code> | Database name in TD account |
 | defaultTable | <code>string</code> | Table name in TD database |
 | [cdpEndpoint] | <code>string</code> | Valid CDP endpoint for ingesting data. <br />[View full list of endpoints here.](https://docs.treasuredata.com/display/public/PD/Sites+and+Endpoints) |
-| [encryptionKey] | <code>string</code> | Encryption key used to locally encrypt events when saved to device storage. This key will be used to generate a aes128 encrytpion key. Any string will work. |
+| [encryptionKey] | <code>string</code> | Encryption key used to locally encrypt events when saved to device storage. This key will be used to generate an aes128 encryption key. Any string will work. |
 
 **Example**  
 ```js
@@ -329,7 +329,7 @@ TreasureDataPlugin.addEvent(customEvent, 'table');
 ## uploadEvents
 `uploadEvents()` <br /><br />
 **Description:** <br />
-Upload buffered events to TreasureData.
+Upload buffered events to Treasure Data.
 This function can be called at any time.
 
 **Example**  
@@ -345,7 +345,7 @@ TreasureDataPlugin.uploadEvents();
 ## addEventWithCallback
 `addEventWithCallback(event, table, database, success, error)` <br /><br />
 **Description:** <br />
-Add an event to a local buffer. Use a callback function to cerify success / failure.
+Add an event to a local buffer. Use a callback function to certify success / failure.
 
 
 | Param | Type | Description |
@@ -374,7 +374,7 @@ TreasureDataPlugin.addEventWithCallback(customEvent, 'table', 'database', () => 
 ## uploadEventsWithCallback
 `uploadEventsWithCallback(success, error)` <br /><br />
 **Description:** <br />
-Upload buffered events to TreasureData.
+Upload buffered events to Treasure Data.
 If you need to know when uploadEvents is successful or has failed, use uploadEventsWithCallback.
 
 
@@ -401,7 +401,7 @@ TreasureDataPlugin.uploadEventsWithCallback(() => {
 `enableAppLifecycleEvent()` <br /><br />
 **Description:** <br />
 **Android Only function.**
-App lifecycle event tracking is optional and not enable by default. 
+App lifecycle event tracking is optional and not enabled by default. 
 Enable automatic app lifecycle event tracking.
 
 **Example**  
@@ -468,7 +468,7 @@ TreasureDataPlugin.isAppLifecycleEventEnabled((enabled) => {
 ## enableAutoAppendUniqId
 `enableAutoAppendUniqId()` <br /><br />
 **Description:** <br />
-Automatically add UUID of the device to each event.
+Automatically add the UUID of the device to each event.
 This value won't change until the application is uninstalled.
 
 **Example**  
@@ -488,7 +488,7 @@ TreasureDataPlugin.enableAutoAppendUniqId();
 ## disableAutoAppendUniqId
 `disableAutoAppendUniqId()` <br /><br />
 **Description:** <br />
-Disable adding UUID of device to each event automatically.
+Disable adding the UUID of the device to each event automatically.
 
 **Example**  
 ```js
@@ -507,7 +507,7 @@ TreasureDataPlugin.disableAutoAppendUniqId();
 ## resetUniqId
 `resetUniqId()` <br /><br />
 **Description:** <br />
-Reset the UUID of device.
+Reset the UUID of the device.
 
 **Example**  
 ```js
@@ -616,12 +616,12 @@ TreasureDataPlugin.disableAutoAppendLocaleInformation();
 ## enableServerSideUploadTimestamp
 `enableServerSideUploadTimestamp([columnName])` <br /><br />
 **Description:** <br />
-To use server side upload timestamp not only client device time that is recorded when your application calls addEvent.
+To use server side upload timestamp in addition to the client device time that is recorded when your application calls addEvent.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [columnName] | <code>string</code> | Optionally include the column name to specify where to upload the time stamp to. |
+| [columnName] | <code>string</code> | Optionally include the column name to specify where to upload the timestamp to. |
 
 **Example**  
 ```js
@@ -669,7 +669,7 @@ TreasureDataPlugin.enableAutoAppendRecordUUID();
 ## disableAutoAppendRecordUUID
 `disableAutoAppendRecordUUID()` <br /><br />
 **Description:** <br />
-Disable adding record UUID to each event automatically.
+Disable automatically adding a UUID to each event record.
 
 **Example**  
 ```js
@@ -686,10 +686,10 @@ TreasureDataPlugin.disableAutoAppendRecordUUID();
 **Description:** <br />
 Advertising ID will be added to each event record automatically.  
 In **Android**, you must install Google Play Service Ads (Gradle com.google.android.gms:play-services-ads) as a dependency for this feature to work.  
-In **iOS**, you must link Ad Support framework in Link Binary With Libraries build phase for this feature to work.  
-User must also not turn on Limit Ad Tracking feature in their device, otherwise, Treasure Data will not attach Advertising Id to the record. 
-Due to asynchronous nature of getting Advertising Id, after `enableAutoAppendAdvertisingIdentifier` method called, it may take some time for Advertising Id to be available to be added to the record. 
-However, Treasure Data does cache the Advertising Id in order to add to the next event without having to wait for the fetch Advertising Id task to complete.
+In **iOS**, you must link the Ad Support framework in the Link Binary With Libraries build phase for this feature to work.  
+User must also not turn on the Limit Ad Tracking feature in their device, or Treasure Data will not attach Advertising Id to the record. 
+Due to the asynchronous nature of getting Advertising Id, after the `enableAutoAppendAdvertisingIdentifier` method is called, it may take some time for Advertising Id to be available and added to the record. 
+Treasure Data does cache the Advertising Id in order to add to the next event without having to wait for the fetch Advertising Id task to complete.
 
 
 | Param | Type | Description |
@@ -726,7 +726,7 @@ TreasureDataPlugin.disableAutoAppendAdvertisingIdentifier();
 ## getSessionId
 `getSessionId(success)` <br /><br />
 **Description:** <br />
-Get current Session ID
+Get current session ID.
 
 
 | Param | Type | Description |
@@ -762,7 +762,7 @@ If `startSession()` is called during this timeout after `endSession()` is called
 ## setGlobalSessionTimeoutMilli
 `setGlobalSessionTimeoutMilli(timeout)` <br /><br />
 **Description:** <br />
-Set the Global Session timeout in milliseconds.
+Set the global session timeout in milliseconds.
 
 
 | Param | Type | Description |
@@ -783,7 +783,7 @@ Set the Global Session timeout in milliseconds.
 ## startGlobalSession
 `startGlobalSession()` <br /><br />
 **Description:** <br />
-Start tracking a global session
+Start tracking a global session.
 
 **See**
 
@@ -799,7 +799,7 @@ Start tracking a global session
 ## endGlobalSession
 `endGlobalSession()` <br /><br />
 **Description:** <br />
-End tracking global session
+End tracking a global session.
 
 **See**
 
@@ -815,7 +815,7 @@ End tracking global session
 ## getGlobalSessionId
 `getGlobalSessionId(success)` <br /><br />
 **Description:** <br />
-Get the current global session ID
+Get the current global session ID.
 
 
 | Param | Type | Description |
@@ -857,7 +857,7 @@ TreasureDataPlugin.startSession(sessionTable, sessionDatabase);
 ## endSession
 `endSession(sessionTable, sessionDatabase)` <br /><br />
 **Description:** <br />
-Stop tracking current session.
+Stop tracking the current session.
 
 
 | Param | Type | Description |
@@ -910,7 +910,7 @@ TreasureDataPlugin.disableCustomEvent();
 ## isCustomEventEnabled
 `isCustomEventEnabled(success)` <br /><br />
 **Description:** <br />
-Whether or not the custom event tracking is enable.
+Whether or not the custom event tracking is enabled.
 
 
 | Param | Type | Description |
@@ -925,8 +925,8 @@ Whether or not the custom event tracking is enable.
 ## enableInAppPurchaseEvent
 `enableInAppPurchaseEvent()` <br /><br />
 **Description:** <br />
-Track in app purchase events automatically  
-You don't need to check for platform when calling this feature's APIs, they will simply be no-op. In app purchase event tracking is optional and not enable by default. To track in app purchase events automatically, you only need to add a line of code:
+Track in-app purchase events automatically.  
+You don't need to check for platform when calling this feature's APIs as they will simply be no-op. In-app purchase event tracking is optional and not enabled by default. To track in-app purchase events automatically, you only need to add a line of code:
 
 **Example**  
 ```js
@@ -945,7 +945,7 @@ TreasureDataPlugin.enableInAppPurchaseEvent();
 ## disableInAppPurchaseEvent
 `disableInAppPurchaseEvent()` <br /><br />
 **Description:** <br />
-Disable tracking in app purchase events.
+Disable tracking in-app purchase events.
 
 **Example**  
 ```js
@@ -964,7 +964,7 @@ TreasureDataPlugin.disableInAppPurchaseEvent();
 ## isInAppPurchaseEventEnabled
 `isInAppPurchaseEventEnabled(enabled)` <br /><br />
 **Description:** <br />
-Check if tracking in app purchase events is enabled.
+Check if tracking in-app purchase events is enabled.
 
 
 | Param | Type | Description |
@@ -990,7 +990,7 @@ console.log('Tracking in app purchase event is enabled?', enabled ? 'yes' : 'no'
 ## disableAppInstalledEvent
 `disableAppInstalledEvent()` <br /><br />
 **Description:** <br />
-Disable automatic tracking of event when app is installed
+Disable automatic tracking of the event when app is installed.
 
 
 * * *
@@ -1000,7 +1000,7 @@ Disable automatic tracking of event when app is installed
 ## disableAppOpenEvent
 `disableAppOpenEvent()` <br /><br />
 **Description:** <br />
-Disable automatic tracking of event when app is opened
+Disable automatic tracking of the event when app is opened.
 
 
 * * *
@@ -1010,7 +1010,7 @@ Disable automatic tracking of event when app is opened
 ## disableAppUpdatedEvent
 `disableAppUpdatedEvent()` <br /><br />
 **Description:** <br />
-Disable automatic tracking of event when app is updated
+Disable automatic tracking of the event when app is updated.
 
 
 * * *
@@ -1061,7 +1061,7 @@ Event data will be compressed before uploading to server.
 ## disableEventCompression
 `disableEventCompression()` <br /><br />
 **Description:** <br />
-Event data will be uploaded in full uncompressed format.
+Event data will be uploaded in the full uncompressed format.
 
 **See**: [enableEventCompression](#enableEventCompression)  
 
@@ -1072,7 +1072,7 @@ Event data will be uploaded in full uncompressed format.
 ## enableLogging
 `enableLogging()` <br /><br />
 **Description:** <br />
-Enable debug log.
+Enable the debug log.
 
 **Example**  
 ```js
@@ -1087,7 +1087,7 @@ TreasureDataPlugin.enableLogging();
 ## disableLogging
 `disableLogging()` <br /><br />
 **Description:** <br />
-Disable debug log.
+Disable the debug log.
 
 **Example**  
 ```js
@@ -1129,14 +1129,15 @@ Clear first run flag.
 ## getUUID
 `getUUID(success)` <br /><br />
 **Description:** <br />
-Get UUID generated from TreasureData.  
-The value will be set to `td_uuid` column for every events if `enableAutoAppendUniqId` is called.
+Get the UUID value assigned to every event as td_uuid by the enableAutoAppendUniqID function.  
+This function assumes you have first called enableAutoApprendUniqID  , which causees all events to have a td_uuid field added to them. getUUID()  returns the value of this td_uuid key for the user to use as they see fit. Note that all events will have the same UUID appended to them.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | success | <code>function</code> | passes the UUID. |
 
+**See**: [enableAutoApprendUniqID](enableAutoApprendUniqID)  
 
 * * *
 
@@ -1145,7 +1146,7 @@ The value will be set to `td_uuid` column for every events if `enableAutoAppendU
 ## fetchUserSegments
 `fetchUserSegments(audienceTokens, keys, success, error)` <br /><br />
 **Description:** <br />
-Profile API.  
+Profiles API.  
 This feature is not enabled on accounts by default, please contact support for more information.  
 **Important:** You must set [`setup('cdpEndpoint: xyz')`](#setup) property of TreasureData's sharedInstance.
 
@@ -1153,7 +1154,7 @@ This feature is not enabled on accounts by default, please contact support for m
 | Param | Type | Description |
 | --- | --- | --- |
 | audienceTokens | <code>array</code> | Audience Tokens |
-| keys | <code>json</code> | keys to access the Profile API |
+| keys | <code>json</code> | keys to access the Profiles API |
 | success | <code>function</code> | function to call on success |
 | error | <code>function</code> | function to call on failure / error |
 
