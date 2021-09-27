@@ -664,7 +664,7 @@ exports.clearFirstRun = function () {
  * 
  * @param {function} success - passes the UUID.
  * 
- * @see {@link enableAutoApprendUniqID}
+ * @see {@link enableAutoAppendUniqID}
  * */
 exports.getUUID = function (success) {
   execute("getUUID", [], success);
