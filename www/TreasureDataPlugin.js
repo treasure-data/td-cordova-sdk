@@ -660,7 +660,7 @@ exports.clearFirstRun = function () {
 /**
  * @summary Get the UUID value assigned to every event as td_uuid by the enableAutoAppendUniqID function.
  * 
- * @description This function assumes you have first called enableAutoApprendUniqID  , which causees all events to have a td_uuid field added to them. getUUID()  returns the value of this td_uuid key for the user to use as they see fit. Note that all events will have the same UUID appended to them.
+ * @description This function assumes you have first called enableAutoAppendUniqID  , which causees all events to have a td_uuid field added to them. getUUID()  returns the value of this td_uuid key for the user to use as they see fit. Note that all events will have the same UUID appended to them.
  * 
  * @param {function} success - passes the UUID.
  * 
