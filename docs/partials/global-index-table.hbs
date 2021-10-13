@@ -1,0 +1,26 @@
+{{#globals kind=kind~}}
+{{#if @first~}}
+{{>heading-indent}}{{../title}}
+
+<table>
+  <thead>
+    <tr>
+      <th>Global</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+{{/if~}}
+    <tr>
+    <td>{{>sig-link-html}}</td>
+    {{#if summary}}
+    <td>{{{md (inlineLinks summary)}}}</td>
+    {{else if description}}
+    <td>{{{md (inlineLinks description)}}}</td>
+    {{/if}}
+    </tr>
+{{#if @last~}}
+  </tbody>
+</table>
+
+{{/if~}}
+{{/globals}}
