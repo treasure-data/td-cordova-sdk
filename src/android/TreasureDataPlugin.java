@@ -116,6 +116,8 @@ public class TreasureDataPlugin extends CordovaPlugin {
             this.endGlobalSession();
         } else if (action.equals("getGlobalSessionId")) {
             this.getGlobalSessionId(callbackContext);
+        } else if (action.equals("resetGlobalSessionId")) {
+            this.resetGlobalSessionId(callbackContext);
         } else if (action.equals("startSession")) {
             final String table = this.getStringArg(args, 0);
             final String database = this.getStringArg(args, 1);
@@ -437,6 +439,10 @@ public class TreasureDataPlugin extends CordovaPlugin {
 
     private void getGlobalSessionId(CallbackContext callback) {
         callback.success(TreasureData.getSessionId(this.cordova.getActivity().getApplicationContext()));
+    }
+
+    private void resetGlobalSessionId(CallbackContext callback) {
+        TreasureData.resetSessionId(this.cordova.getActivity().getApplicationContext());
     }
 
     private void startSession(String table, String database) {

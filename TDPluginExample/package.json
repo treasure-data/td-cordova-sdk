@@ -27,10 +27,12 @@
       "com.treasuredata.cordova": {}
     },
     "platforms": [
-      "ios"
+      "ios",
+      "android"
     ]
   },
   "devDependencies": {
+    "cordova-android": "^9.1.0",
     "cordova-ios": "^6.2.0",
     "cordova-plugin-whitelist": "^1.3.4",
     "td-cordova-sdk": "file:.."
