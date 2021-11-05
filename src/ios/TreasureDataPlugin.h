@@ -87,6 +87,12 @@
 
 - (void)fetchUserSegments:(CDVInvokedUrlCommand *)command;
 
+#pragma mark - Default Values
+
+- (void)setDefaultValue:(CDVInvokedUrlCommand *)command;
+- (void)defaultValue:(CDVInvokedUrlCommand *)command;
+- (void)removeDefaultValue:(CDVInvokedUrlCommand *)command;
+
 #pragma mark - Misc.
 
 #pragma mark Retry uploading

@@ -19,7 +19,7 @@
 
     <source-file src="src/android/TreasureDataPlugin.java" target-dir="src/com/treasuredata/cordova/TreasureDataPlugin" />
 
-    <framework src="com.treasuredata:td-android-sdk:0.3.0"/>
+    <framework src="com.treasuredata:td-android-sdk:0.6.0"/>
   </platform>
   <platform name="ios">
     <config-file target="config.xml" parent="/*">
@@ -34,7 +34,7 @@
           <source url="https://github.com/CocoaPods/Specs.git"/>
       </config>
       <pods use-frameworks="true">
-          <pod name="TreasureData-iOS-SDK" spec="= 0.6.0" />
+          <pod name="TreasureData-iOS-SDK" spec="= 0.8.1" />
       </pods>
     </podspec>
   </platform>

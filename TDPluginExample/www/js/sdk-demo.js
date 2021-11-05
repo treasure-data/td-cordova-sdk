@@ -16,6 +16,8 @@ var demo = (function () {
                 user_id: "value",
                 td_client_id: "value",
             },
+            defaultValueKey: "Key",
+            defaultValueValue: "Value"
         },
 
         storageKey: 'configs',
@@ -212,6 +214,37 @@ var demo = (function () {
                     });
                 }
             );
+        },
+
+        setDefaultValue: function () {
+            cordova.plugins.TreasureDataPlugin.setDefaultValue(
+                model.customConfig.defaultValueKey,
+                model.customConfig.defaultValueValue,
+                model.config.defaultDatabase,
+                model.config.defaultTable
+            );
+        },
+
+        getDefaultValue: function () {
+            cordova.plugins.TreasureDataPlugin.defaultValue(
+                model.customConfig.defaultValueKey,
+                model.config.defaultDatabase,
+                model.config.defaultTable,
+                function success(value) {
+                    model.present({
+                        type: constants.actionTypes.showInfo,
+                        payload: { value: value },
+                    });
+                }
+            );
+        },
+
+        removeDefaultValue: function () {
+            cordova.plugins.TreasureDataPlugin.removeDefaultValue(
+                model.customConfig.defaultValueKey,
+                model.config.defaultDatabase,
+                model.config.defaultTable
+            )
         },
 
         enableAppLifecycleEvent: function () {

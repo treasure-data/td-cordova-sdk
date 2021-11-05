@@ -59,6 +59,11 @@ var constants = {
     CLEAR_FIRSTRUN_CLASS: '.clear-firstrun',
     GET_UUID_CLASS: '.get-uuid',
     FETCH_USERSEGMENTS_CLASS: '.fetch-user-segments',
+
+    SET_DEFAULT_VALUE_CLASS: '.set-default-value',
+    GET_DEFAULT_VALUE_CLASS: '.get-default-value',
+    REMOVE_DEFAULT_VALUE_CLASS: '.remove-default-value',
+
     UPDATE_CONFIG_CLASS: '.update-config',
     IAP_CLASS: '.iap',
 
