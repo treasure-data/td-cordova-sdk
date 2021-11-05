@@ -275,6 +275,11 @@
     [self sendStringResult:command string:sessionId];
 }
 
+- (void)resetGlobalSessionId:(CDVInvokedUrlCommand *)command
+{
+    [TreasureData resetSessionId];
+}
+
 #pragma mark - Automatically tracked events
 
 #pragma mark Custom Event

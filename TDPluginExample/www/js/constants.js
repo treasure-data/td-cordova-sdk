@@ -31,6 +31,7 @@ var constants = {
     ENABLE_GLOBALSESSION_CLASS: '.enable-globalsession',
     DISABLE_GLOBALSESSION_CLASS: '.disable-globalsession',
     GET_GLOBALSESSION_CLASS: '.get-globalsession',
+    RESET_GLOBALSESSION_CLASS: '.reset-globalsession',
 
     ENABLE_SESSION_CLASS: '.enable-session',
     DISABLE_SESSION_CLASS: '.disable-session',

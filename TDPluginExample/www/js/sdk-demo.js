@@ -347,6 +347,10 @@ var demo = (function () {
             );
         },
 
+        resetGlobalSessionId: function () {
+            cordova.plugins.TreasureDataPlugin.resetGlobalSessionId();
+        },
+
         startSession: function () {
             cordova.plugins.TreasureDataPlugin.startSession(
                 model.customConfig.table,

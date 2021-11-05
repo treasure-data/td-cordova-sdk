@@ -62,6 +62,7 @@
 - (void)endGlobalSession:(CDVInvokedUrlCommand *)command;
 - (void)setGlobalSessionTimeoutMilli:(CDVInvokedUrlCommand *)command;
 - (void)getGlobalSessionId:(CDVInvokedUrlCommand *)command;
+- (void)resetGlobalSessionId:(CDVInvokedUrlCommand *)command;
 
 #pragma mark - Automatically tracked events
 

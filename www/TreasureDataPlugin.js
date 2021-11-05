@@ -438,6 +438,16 @@ exports.getGlobalSessionId = function (success) {
 };
 
 /**
+ * Reset global session. This will force create a new session when `startGlobalSession` is called.
+ * 
+ * @see {@link startGlobalSession}
+ * @see {@link endGlobalSession}
+ * */
+ exports.resetGlobalSessionId = function (success) {
+  execute("resetGlobalSessionId", []);
+};
+
+/**
  * Start tracking a session.
  * 
  * @param {string} sessionTable     - Table to use for the current session

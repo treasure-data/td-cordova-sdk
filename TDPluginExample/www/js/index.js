@@ -94,7 +94,8 @@ var app = {
             disableGlobalSessionBtn = this.query(
                 constants.DISABLE_GLOBALSESSION_CLASS
             ),
-            getGlobalSessionBtn = this.query(constants.GET_GLOBALSESSION_CLASS);
+            getGlobalSessionBtn = this.query(constants.GET_GLOBALSESSION_CLASS),
+            resetGlobalSessionBtn = this.query(constants.RESET_GLOBALSESSION_CLASS);
 
         var enableSessionBtn = this.query(constants.ENABLE_SESSION_CLASS),
             disableSessionBtn = this.query(constants.DISABLE_SESSION_CLASS),
@@ -237,6 +238,10 @@ var app = {
         this.registerClickEvent(
             getGlobalSessionBtn,
             handlers.getGlobalSessionId
+        );
+        this.registerClickEvent(
+            resetGlobalSessionBtn,
+            handlers.resetGlobalSessionId
         );
 
         this.registerClickEvent(enableSessionBtn, handlers.startSession);
