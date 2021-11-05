@@ -169,6 +169,22 @@ public class TreasureDataPlugin extends CordovaPlugin {
             final JSONObject keys = args.getJSONObject(1);
 
             this.fetchUserSegments(tokens, keys, callbackContext);
+        } else if (action.equals("setDefaultValue")) {
+            final String key = this.getStringArg(args, 0);
+            final String value = this.getStringArg(args, 1);
+            final String database = this.getStringArg(args, 2);
+            final String table = this.getStringArg(args, 3);
+            this.setDefaultValue(database, table, key, value);
+        } else if (action.equals("defaultValue")) {
+            final String key = this.getStringArg(args, 0);
+            final String database = this.getStringArg(args, 1);
+            final String table = this.getStringArg(args, 2);
+            this.getDefaultValue(database, table, key, callbackContext);
+        } else if (action.equals("removeDefaultValue")) {
+            final String key = this.getStringArg(args, 0);
+            final String database = this.getStringArg(args, 1);
+            final String table = this.getStringArg(args, 2);
+            this.removeDefaultValue(database, table, key);
         } else {
           return false;
         }
@@ -330,6 +346,20 @@ public class TreasureDataPlugin extends CordovaPlugin {
                 }
             }
         });
+    }
+
+    private void setDefaultValue(String database, String table, String key, String value) {
+        TreasureData.sharedInstance().setDefaultValue(database, table, key, value);
+    }
+
+    private void getDefaultValue(String database, String table, String key, final CallbackContext callback) throws JSONException {
+        Object defaultValue = TreasureData.sharedInstance().getDefaultValue(database, table, key);
+        String defaultValueString = defaultValue == null ? null : defaultValue.toString();
+        callback.success(defaultValueString);
+    }
+
+    private void removeDefaultValue(String database, String table, String key) {
+        TreasureData.sharedInstance().removeDefaultValue(database, table, key);
     }
 
     private void enableAppLifecycleEvent() {
