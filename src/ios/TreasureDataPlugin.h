@@ -62,6 +62,7 @@
 - (void)endGlobalSession:(CDVInvokedUrlCommand *)command;
 - (void)setGlobalSessionTimeoutMilli:(CDVInvokedUrlCommand *)command;
 - (void)getGlobalSessionId:(CDVInvokedUrlCommand *)command;
+- (void)resetGlobalSessionId:(CDVInvokedUrlCommand *)command;
 
 #pragma mark - Automatically tracked events
 
@@ -86,6 +87,12 @@
 #pragma mark - Profile API
 
 - (void)fetchUserSegments:(CDVInvokedUrlCommand *)command;
+
+#pragma mark - Default Values
+
+- (void)setDefaultValue:(CDVInvokedUrlCommand *)command;
+- (void)defaultValue:(CDVInvokedUrlCommand *)command;
+- (void)removeDefaultValue:(CDVInvokedUrlCommand *)command;
 
 #pragma mark - Misc.
 

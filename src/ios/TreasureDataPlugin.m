@@ -275,6 +275,11 @@
     [self sendStringResult:command string:sessionId];
 }
 
+- (void)resetGlobalSessionId:(CDVInvokedUrlCommand *)command
+{
+    [TreasureData resetSessionId];
+}
+
 #pragma mark - Automatically tracked events
 
 #pragma mark Custom Event
@@ -346,6 +351,37 @@
             [self sendErrorMessageResult:command code:errorCode message:error.localizedDescription];
         }
     }];
+}
+
+#pragma mark - Default Values
+
+- (void)setDefaultValue:(CDVInvokedUrlCommand *)command
+{
+    NSString *key = [command.arguments objectAtIndex: 0];
+    NSString *value = [command.arguments objectAtIndex: 1];
+    NSString *database = [command.arguments objectAtIndex: 2];
+    NSString *table = [command.arguments objectAtIndex: 3];
+
+    [[TreasureData sharedInstance] setDefaultValue:value forKey:key database:database table:table];
+}
+
+- (void)defaultValue:(CDVInvokedUrlCommand *)command
+{
+    NSString *key = [command.arguments objectAtIndex: 0];
+    NSString *database = [command.arguments objectAtIndex: 1];
+    NSString *table = [command.arguments objectAtIndex: 2];
+
+    NSString *value = [[TreasureData sharedInstance] defaultValueForKey:key database:database table:table];
+    [self sendStringResult:command string:value];
+}
+
+- (void)removeDefaultValue:(CDVInvokedUrlCommand *)command
+{
+    NSString *key = [command.arguments objectAtIndex: 0];
+    NSString *database = [command.arguments objectAtIndex: 1];
+    NSString *table = [command.arguments objectAtIndex: 2];
+
+    [[TreasureData sharedInstance] removeDefaultValueForKey:key database:database table:table];
 }
 
 #pragma mark - Misc.

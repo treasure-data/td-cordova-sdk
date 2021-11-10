@@ -31,6 +31,7 @@ var constants = {
     ENABLE_GLOBALSESSION_CLASS: '.enable-globalsession',
     DISABLE_GLOBALSESSION_CLASS: '.disable-globalsession',
     GET_GLOBALSESSION_CLASS: '.get-globalsession',
+    RESET_GLOBALSESSION_CLASS: '.reset-globalsession',
 
     ENABLE_SESSION_CLASS: '.enable-session',
     DISABLE_SESSION_CLASS: '.disable-session',
@@ -59,6 +60,11 @@ var constants = {
     CLEAR_FIRSTRUN_CLASS: '.clear-firstrun',
     GET_UUID_CLASS: '.get-uuid',
     FETCH_USERSEGMENTS_CLASS: '.fetch-user-segments',
+
+    SET_DEFAULT_VALUE_CLASS: '.set-default-value',
+    GET_DEFAULT_VALUE_CLASS: '.get-default-value',
+    REMOVE_DEFAULT_VALUE_CLASS: '.remove-default-value',
+
     UPDATE_CONFIG_CLASS: '.update-config',
     IAP_CLASS: '.iap',
 

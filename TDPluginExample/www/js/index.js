@@ -94,7 +94,8 @@ var app = {
             disableGlobalSessionBtn = this.query(
                 constants.DISABLE_GLOBALSESSION_CLASS
             ),
-            getGlobalSessionBtn = this.query(constants.GET_GLOBALSESSION_CLASS);
+            getGlobalSessionBtn = this.query(constants.GET_GLOBALSESSION_CLASS),
+            resetGlobalSessionBtn = this.query(constants.RESET_GLOBALSESSION_CLASS);
 
         var enableSessionBtn = this.query(constants.ENABLE_SESSION_CLASS),
             disableSessionBtn = this.query(constants.DISABLE_SESSION_CLASS),
@@ -137,6 +138,10 @@ var app = {
 
         var getUUIDBtn = this.query(constants.GET_UUID_CLASS);
         var fetchUserSegmentsBtn = this.query(constants.FETCH_USERSEGMENTS_CLASS);
+
+        var setDefaultValueBtn = this.query(constants.SET_DEFAULT_VALUE_CLASS);
+        var getDefaultValueBtn = this.query(constants.GET_DEFAULT_VALUE_CLASS);
+        var removeDefaultValueBtn = this.query(constants.REMOVE_DEFAULT_VALUE_CLASS);
 
         var updateConfigBtn = this.query(constants.UPDATE_CONFIG_CLASS)
         var iapBtn = this.query(constants.IAP_CLASS)
@@ -234,6 +239,10 @@ var app = {
             getGlobalSessionBtn,
             handlers.getGlobalSessionId
         );
+        this.registerClickEvent(
+            resetGlobalSessionBtn,
+            handlers.resetGlobalSessionId
+        );
 
         this.registerClickEvent(enableSessionBtn, handlers.startSession);
         this.registerClickEvent(disableSessionBtn, handlers.endSession);
@@ -290,6 +299,10 @@ var app = {
         this.registerClickEvent(clearFirstRunBtn, handlers.clearFirstRun);
         this.registerClickEvent(getUUIDBtn, handlers.getUUID);
         this.registerClickEvent(fetchUserSegmentsBtn, handlers.fetchUserSegments);
+        
+        this.registerClickEvent(setDefaultValueBtn, handlers.setDefaultValue);
+        this.registerClickEvent(getDefaultValueBtn, handlers.getDefaultValue);
+        this.registerClickEvent(removeDefaultValueBtn, handlers.removeDefaultValue);
 
         this.registerClickEvent(updateConfigBtn, function (evt) {
             evt.preventDefault()
