@@ -755,9 +755,7 @@ exports.fetchUserSegments = function (audienceTokens, keys, success, error) {
    * 
    * */
 exports.setDefaultValue = function (value, key, database, table) {
-  console.log("Setting default value");
   execute("setDefaultValue", [value, key, database, table]);
-  // TdReactNativeSdk.setDefaultValue(value, key, database, table);
 };
 
 /**
@@ -784,5 +782,4 @@ exports.defaultValue = function (key, database, table, success) {
  * */
 exports.removeDefaultValue = function (key, database, table) {
   execute("removeDefaultValue", [key, database, table]);
-  // TdReactNativeSdk.removeDefaultValue(key, database, table);
 };
