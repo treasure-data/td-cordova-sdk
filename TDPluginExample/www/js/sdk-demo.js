@@ -1,7 +1,7 @@
 var demo = (function () {
     var model = {
         config: {
-            apiEndpoint: "https://in.treasuredata.com",
+            apiEndpoint: "https://us01.records.in.treasuredata.com",
             apiKey: "1/xxxxxxxxxx",
             defaultDatabase: "defaultDatabase",
             defaultTable: "defaultTable",
@@ -9,7 +9,7 @@ var demo = (function () {
         },
         customConfig: {
             database: "_sondo",
-            table: "cordova_test",
+            table: "cordova_test_2023",
 
             audienceTokens: [ "xxxx, xxxx", ],
             segmentKeys: {
@@ -147,6 +147,7 @@ var demo = (function () {
                 {
                     demo_name: "cordova plugin",
                     event_name: "addEvent",
+                    platform: device.platform
                 },
                 model.customConfig.table,
                 model.customConfig.database
@@ -158,6 +159,7 @@ var demo = (function () {
                 {
                     demo_name: "cordova plugin",
                     event_name: "addEvent",
+                    platform: device.platform
                 },
                 model.customConfig.table,
                 model.customConfig.database,
@@ -300,14 +302,6 @@ var demo = (function () {
 
         disableAutoAppendLocaleInformation: function () {
             cordova.plugins.TreasureDataPlugin.disableAutoAppendLocaleInformation();
-        },
-
-        enableServerSideUploadTimestamp: function () {
-            cordova.plugins.TreasureDataPlugin.enableServerSideUploadTimestamp();
-        },
-
-        disableServerSideUploadTimestamp: function () {
-            cordova.plugins.TreasureDataPlugin.disableServerSideUploadTimestamp();
         },
 
         enableAutoAppendRecordUUID: function () {

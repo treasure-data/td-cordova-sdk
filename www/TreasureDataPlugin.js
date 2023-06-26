@@ -279,34 +279,6 @@ exports.disableAutoAppendLocaleInformation = function () {
 };
 
 /**
- * To use server side upload timestamp in addition to the client device time that is recorded when your application calls addEvent.
- * 
- * @param {string} [columnName] Optionally include the column name to specify where to upload the timestamp to.
- * 
- * @see {@link disableServerSideUploadTimestamp}
- * 
- * @example
- * TreasureDataPlugin.enableServerSideUploadTimestamp();
- * // Or specify custom column
- * TreasureDataPlugin.enableServerSideUploadTimestamp('custom_servier_side_upload_timestamp_column');
- * */
-exports.enableServerSideUploadTimestamp = function (columnName) {
-  execute("enableServerSideUploadTimestamp", [columnName]);
-};
-
-/**
- * Disable server side upload timestamp.
- * 
- * @see {@link enableServerSideUploadTimestamp}
- * 
- * @example
- * TreasureDataPlugin.disableServerSideUploadTimestamp();
- * */
-exports.disableServerSideUploadTimestamp = function () {
-  execute("disableServerSideUploadTimestamp", []);
-};
-
-/**
  * Automatically add a UUID to each event record.
  * Each event will have a different UUID.
  * 

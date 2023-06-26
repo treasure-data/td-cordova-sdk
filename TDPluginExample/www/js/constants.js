@@ -19,9 +19,6 @@ var constants = {
     ENABLE_LOCALEINFO_CLASS: '.enable-localeinfo',
     DISABLE_LOCALEINFO_CLASS: '.disable-localeinfo',
 
-    ENABLE_SERVERTIMESTAMP_CLASS: '.enable-servertimestamp',
-    DISABLE_SERVERTIMESTAMP_CLASS: '.disable-servertimestamp',
-
     ENABLE_RECORDUUID_CLASS: '.enable-recorduuid',
     DISABLE_RECORDUUID_CLASS: '.disable-recorduuid',
 
