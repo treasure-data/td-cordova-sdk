@@ -15,7 +15,7 @@ After installing the plugin, you can access the methods through `cordova.plugins
 ## Configuration
 ```javascript
 TreasureDataPlugin.setup({
-  apiEndpoint: 'https://in.treasure-data.com', // Or other supported endpoints
+  apiEndpoint: 'https://us01.records.in.treasuredata.com', // Or other supported endpoints
   encryptionKey: 'xxxxx',
   apiKey: 'xxxxx', /// You should use write only api key
   defaultDatabase: 'default_database',
@@ -172,18 +172,6 @@ TreasureDataPlugin.enableAutoAppendLocaleInformation();
 To disable:
 ```javascript
 TreasureDataPlugin.disableAutoAppendLocaleInformation();
-```
-
-## Use server side upload timestamp
-To use server side upload timestamp not only client device time that is recorded when your application calls addEvent
-```javascript
-TreasureDataPlugin.enableServerSideUploadTimestamp();
-// Or specify custom column
-TreasureDataPlugin.enableServerSideUploadTimestamp('custom_servier_side_upload_timestamp_column');
-```
-To disable:
-```javascript
-TreasureDataPlugin.disableServerSideUploadTimestamp();
 ```
 
 ## Start/End session
