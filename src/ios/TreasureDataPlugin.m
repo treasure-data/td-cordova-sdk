@@ -51,7 +51,11 @@
 {
     NSDictionary *configuration = [command.arguments objectAtIndex:0];
 
-    [TreasureData initializeWithApiKey:configuration[@"apiKey"] apiEndpoint:configuration[@"apiEndpoint"]];
+    if (configuration[@"apiEndpoint"]) {
+      [TreasureData initializeWithApiKey:configuration[@"apiKey"] apiEndpoint:configuration[@"apiEndpoint"]];
+    } else {
+      [TreasureData initializeWithApiKey:configuration[@"apiKey"]];
+    }
 
     [TreasureData initializeEncryptionKey:configuration[@"encryptionKey"]];
     [[TreasureData sharedInstance] setDefaultDatabase:configuration[@"defaultDatabase"]];

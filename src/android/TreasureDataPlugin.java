@@ -215,13 +215,13 @@ public class TreasureDataPlugin extends CordovaPlugin {
                 encryptionKey = options.getString("encryptionKey");
             }
 
-            String apiEndpoint = "https://us01.records.in.treasuredata.com";
-            if (options.has("apiEndpoint")) {
-                apiEndpoint = options.getString("apiEndpoint");
-            }
-
             Context context = this.cordova.getActivity().getApplicationContext();
-            TreasureData.initializeSharedInstance(context, options.getString("apiKey"), apiEndpoint);
+
+            if (options.has("apiEndpoint")) {
+              TreasureData.initializeSharedInstance(context, options.getString("apiKey"), options.getString("apiEndpoint"));
+            } else {
+              TreasureData.initializeSharedInstance(context, options.getString("apiKey"));
+            }
 
             final TreasureData instance = TreasureData.sharedInstance();
 
