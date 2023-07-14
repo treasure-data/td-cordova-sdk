@@ -87,11 +87,6 @@ public class TreasureDataPlugin extends CordovaPlugin {
             this.enableAutoAppendLocaleInformation();
         } else if (action.equals("disableAutoAppendLocaleInformation")) {
             this.disableAutoAppendLocaleInformation();
-        } else if (action.equals("enableServerSideUploadTimestamp")) {
-            final String columnName = this.getStringArg(args, 0);
-            this.enableServerSideUploadTimestamp(columnName);
-        } else if (action.equals("disableServerSideUploadTimestamp")) {
-            this.disableServerSideUploadTimestamp();
         } else if (action.equals("enableAutoAppendRecordUUID")) {
             final String columnName = this.getStringArg(args, 0);
             this.enableAutoAppendRecordUUID(columnName);
@@ -199,10 +194,6 @@ public class TreasureDataPlugin extends CordovaPlugin {
     }
 
     private void setup(JSONObject options) throws JSONException, URISyntaxException {
-        if (options.has("apiEndpoint")) {
-            TreasureData.initializeApiEndpoint(options.getString("apiEndpoint"));
-        }
-
         if (options.has("apiKey")) {
             String defaultDatabase = DEFAULT_DATABASE;
             if (options.has("defaultDatabase")) {
@@ -225,7 +216,12 @@ public class TreasureDataPlugin extends CordovaPlugin {
             }
 
             Context context = this.cordova.getActivity().getApplicationContext();
-            TreasureData.initializeSharedInstance(context, options.getString("apiKey"));
+
+            if (options.has("apiEndpoint")) {
+              TreasureData.initializeSharedInstance(context, options.getString("apiKey"), options.getString("apiEndpoint"));
+            } else {
+              TreasureData.initializeSharedInstance(context, options.getString("apiKey"));
+            }
 
             final TreasureData instance = TreasureData.sharedInstance();
 
@@ -409,18 +405,6 @@ public class TreasureDataPlugin extends CordovaPlugin {
 
     private void disableAutoAppendLocaleInformation() {
         TreasureData.sharedInstance().disableAutoAppendLocaleInformation();
-    }
-
-    private void enableServerSideUploadTimestamp(String columnName) {
-        if (columnName == null || columnName.isEmpty()) {
-            TreasureData.sharedInstance().enableServerSideUploadTimestamp();
-        } else {
-            TreasureData.sharedInstance().enableServerSideUploadTimestamp(columnName);
-        }
-    }
-
-    private void disableServerSideUploadTimestamp() {
-        TreasureData.sharedInstance().disableServerSideUploadTimestamp();
     }
 
     private void enableAutoAppendRecordUUID(String columnName) {

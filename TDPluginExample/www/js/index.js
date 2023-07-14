@@ -16,20 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var app = {
-    // Application Constructor
-    initialize: function () {
-        document.addEventListener(
-            "deviceready",
-            this.onDeviceReady.bind(this),
-            false
-        );
-    },
+document.addEventListener('deviceready', onDeviceReady, false);
 
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
+function onDeviceReady() {
+  console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
+
+  app.onDeviceReady();
+}
+
+var app = {
     onDeviceReady: function () {
         this.setupEventListeners();
 
@@ -71,13 +66,6 @@ var app = {
         var enableLocaleInfoBtn = this.query(constants.ENABLE_LOCALEINFO_CLASS),
             disableLocaleInfoBtn = this.query(
                 constants.DISABLE_LOCALEINFO_CLASS
-            );
-
-        var enableServerTimestampBtn = this.query(
-                constants.ENABLE_SERVERTIMESTAMP_CLASS
-            ),
-            disableServerTimestampBtn = this.query(
-                constants.DISABLE_SERVERTIMESTAMP_CLASS
             );
 
         var enableRecordUUIDBtn = this.query(constants.ENABLE_RECORDUUID_CLASS),
@@ -204,14 +192,6 @@ var app = {
             handlers.disableAutoAppendLocaleInformation
         );
         this.registerClickEvent(
-            enableServerTimestampBtn,
-            handlers.enableServerSideUploadTimestamp
-        );
-        this.registerClickEvent(
-            disableServerTimestampBtn,
-            handlers.disableServerSideUploadTimestamp
-        );
-        this.registerClickEvent(
             enableRecordUUIDBtn,
             handlers.enableAutoAppendRecordUUID
         );
@@ -333,5 +313,3 @@ var app = {
         this.registerClickEvent(iapBtn, handlers.purchase)
     },
 };
-
-app.initialize();

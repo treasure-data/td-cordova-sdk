@@ -51,9 +51,13 @@
 {
     NSDictionary *configuration = [command.arguments objectAtIndex:0];
 
-    [TreasureData initializeApiEndpoint:configuration[@"apiEndpoint"]];
+    if (configuration[@"apiEndpoint"]) {
+      [TreasureData initializeWithApiKey:configuration[@"apiKey"] apiEndpoint:configuration[@"apiEndpoint"]];
+    } else {
+      [TreasureData initializeWithApiKey:configuration[@"apiKey"]];
+    }
+
     [TreasureData initializeEncryptionKey:configuration[@"encryptionKey"]];
-    [TreasureData initializeWithApiKey:configuration[@"apiKey"]];
     [[TreasureData sharedInstance] setDefaultDatabase:configuration[@"defaultDatabase"]];
     [[TreasureData sharedInstance] setDefaultTable:configuration[@"defaultTable"]];
     [[TreasureData sharedInstance] setCdpEndpoint:configuration[@"cdpEndpoint"]];
@@ -168,23 +172,6 @@
 - (void)disableAutoAppendLocaleInformation:(CDVInvokedUrlCommand *)command
 {
     [[TreasureData sharedInstance] disableAutoAppendLocaleInformation];
-}
-
-#pragma mark - Server Side Upload Timestamp
-
-- (void)enableServerSideUploadTimestamp:(CDVInvokedUrlCommand *)command
-{
-    NSString *columnName = [self getStringArg:command atIndex:0];
-    if (columnName == nil) {
-        [[TreasureData sharedInstance] enableServerSideUploadTimestamp];
-    } else {
-        [[TreasureData sharedInstance] enableServerSideUploadTimestamp:columnName];
-    }
-}
-
-- (void)disableServerSideUploadTimestamp:(CDVInvokedUrlCommand *)command
-{
-    [[TreasureData sharedInstance] disableServerSideUploadTimestamp];
 }
 
 #pragma mark - Auto Append Record UUID
