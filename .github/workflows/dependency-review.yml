@@ -1,0 +1,20 @@
+# This file is managed by the templated-files-bot. Changes should be made at the following repository.
+# https://github.com/treasure-data/dependency-bots
+#
+# For further details about reusable workflows executed by this workflow, see the following repository.
+# https://github.com/treasure-data/backend-github-workflows
+
+name: Dependency Review
+
+on:
+  push:
+    branches: ['main', 'master']
+  pull_request:
+    branches: ['main', 'master']
+
+jobs:
+  dependency-review:
+    uses: treasure-data/backend-github-workflows/.github/workflows/call-dependency-review.yml@main
+    with:
+      working-directory: .
+    secrets: inherit
