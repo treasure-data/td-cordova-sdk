@@ -17,4 +17,6 @@ jobs:
     uses: treasure-data/backend-github-workflows/.github/workflows/call-dependency-review.yml@main
     with:
       working-directory: .
+      maven-settings-directory: .
+      gradle-build-cmd: ./gradlew assemble -Dorg.gradle.jvmargs=-Xmx2048m
     secrets: inherit
