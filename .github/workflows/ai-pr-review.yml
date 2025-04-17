@@ -1,0 +1,26 @@
+# This file is managed by the templated-files-bot. Changes should be made at the following repository.
+# https://github.com/treasure-data/dependency-bots
+#
+# For further details about reusable workflows executed by this workflow, see the following repository.
+# https://github.com/treasure-data/backend-github-workflows
+
+name: AI PR Review
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ai-pr-review:
+    # This job is only run when the PR is not a draft and the actor is not a bot
+    # Workflows triggered by Dependabot will not have secrets passed to the runner
+    if: ${{ github.event.pull_request.draft == false && !endsWith(github.actor, '[bot]') && github.actor != 'td-actions-bot' && github.actor != 'td-scala-steward'}}
+    uses: treasure-data/backend-github-workflows/.github/workflows/ai-pr-review.yml@main
+    with:
+      action_name: ${{ github.workflow }}
+    secrets:
+      TD_LLM_WEBHOOK_AUTH_TOKEN: ${{ secrets.TD_LLM_WEBHOOK_AUTH_TOKEN }}
