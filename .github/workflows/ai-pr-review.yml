@@ -24,3 +24,6 @@ jobs:
       action_name: ${{ github.workflow }}
     secrets:
       TD_LLM_WEBHOOK_AUTH_TOKEN: ${{ secrets.TD_LLM_WEBHOOK_AUTH_TOKEN }}
+    permissions:
+      contents: read
+      pull-requests: write
