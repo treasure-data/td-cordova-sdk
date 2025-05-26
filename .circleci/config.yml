@@ -11,7 +11,7 @@ jobs:
           command: yarn install
           name: Run yarn install
 orbs:
-  node: circleci/node@circleci/node@7.1.0
+  node: circleci/node@7.1.0
 version: 2.1
 workflows:
   test:
