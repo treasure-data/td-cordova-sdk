@@ -19,8 +19,8 @@ jobs:
       working-directory: .
       maven-settings-directory: .
       gradle-build-cmd: ./gradlew assemble -Dorg.gradle.jvmargs=-Xmx2048m
-      sbt-ignore-configs: ''
-      sbt-ignore-modules: ''
+      sbt-ignore-configs: 
+      sbt-ignore-modules: 
       java-version: 11
       java-distribution: temurin
     secrets: inherit
