@@ -5,6 +5,9 @@
 # https://github.com/treasure-data/backend-github-workflows
 
 name: Dependency Review
+permissions:
+  contents: read
+  pull-requests: write
 'on':
   push:
     branches:
