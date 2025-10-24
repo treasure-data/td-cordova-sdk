@@ -5,16 +5,29 @@
 # https://github.com/treasure-data/backend-github-workflows
 
 name: Dependency Review
-
-on:
+permissions:
+  contents: read
+  pull-requests: write
+'on':
   push:
-    branches: ['main', 'master']
+    branches:
+    - main
+    - master
   pull_request:
-    branches: ['main', 'master']
-
+    branches:
+    - main
+    - master
 jobs:
   dependency-review:
     uses: treasure-data/backend-github-workflows/.github/workflows/call-dependency-review.yml@main
     with:
-      working-directory: .
+      working-directory: '.'
+      maven-settings-directory: '.'
+      gradle-build-cmd: ./gradlew assemble -Dorg.gradle.jvmargs=-Xmx2048m
+      sbt-ignore-configs: ''
+      sbt-ignore-modules: ''
+      java-version: 11
+      java-distribution: temurin
     secrets: inherit
+    permissions:
+      contents: write
