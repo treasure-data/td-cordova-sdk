@@ -12,11 +12,9 @@ permissions:
   push:
     branches:
     - main
-    - master
   pull_request:
     branches:
     - main
-    - master
 jobs:
   dependency-review:
     uses: treasure-data/backend-github-workflows/.github/workflows/call-dependency-review.yml@main
@@ -26,7 +24,6 @@ jobs:
       gradle-build-cmd: ./gradlew assemble -Dorg.gradle.jvmargs=-Xmx2048m
       sbt-ignore-configs: ''
       sbt-ignore-modules: ''
-      java-version: 11
       java-distribution: temurin
     secrets: inherit
     permissions:
